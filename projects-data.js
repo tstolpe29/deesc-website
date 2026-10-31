@@ -1,10 +1,10 @@
 window.DEESC_PROJECTS = [
   {
     "id": "low-power-haptic-reminder",
-    "number": "01",
-    "category": "Client Work",
-    "title": "Low-Power Haptic Reminder",
-    "subtitle": "A compact rechargeable device designed for periodic tactile reminders with week-plus battery-life targets.",
+    "number": "02",
+    "category": "Built for People",
+    "title": "Haptic Reminder",
+    "subtitle": "A pocket-sized rechargeable device that gives a gentle vibration reminder every ten minutes.",
     "hero": "IMG_2054.jpeg",
     "tags": [
       "STM32",
@@ -13,14 +13,14 @@ window.DEESC_PROJECTS = [
       "PCB + Enclosure"
     ],
     "status": "Delivered client prototype",
-    "overview": "A nonprofit wellness client needed a very small device that could provide a short vibration reminder every ten minutes without becoming another device that needed daily charging. The result is a roughly 1 x 2 inch rechargeable embedded system that combines the PCB, battery, vibration motor, controls and enclosure into one purpose-built package.",
+    "overview": "A nonprofit wellness client needed a small, simple way to give regular tactile reminders. I built a roughly 1 × 2 inch device that combines the electronics, battery, vibration motor, controls and enclosure in one rechargeable package.",
     "engineering": [
-      "An STM32G071GBU6 manages the timing and motor pulse while spending most of its life in low-power sleep to minimize standby current.",
-      "USB-C feeds an MCP73831 single-cell charge controller; a low-quiescent 2.8 V regulator powers the logic rail.",
-      "An AO3400A low-side MOSFET switches the vibration motor, while the MCU can monitor battery level through a resistor-divider ADC input.",
-      "The board and 3D-printed enclosure were co-designed around the charging port, switch placement, motor, battery and mounting constraints. The battery wires are soldered directly to the board and the cell is adhesively secured rather than using the optional header footprint."
+      "A quiet reminder — an STM32 microcontroller keeps time and briefly drives the vibration motor every ten minutes.",
+      "Power-conscious firmware — the controller sleeps between reminders to reduce energy use while the device is idle.",
+      "Rechargeable hardware — USB-C charging and a single-cell battery make it convenient to recharge.",
+      "Designed as one object — the board and 3D-printed enclosure were developed together around the battery, motor, charging port and controls."
     ],
-    "focus": "The important engineering problem was not simply making a motor buzz. It was balancing haptic strength, package size, battery capacity and quiescent current so the device could stay useful for long periods between charges.",
+    "focus": "The important tradeoff was between a noticeable vibration, a small enclosure and low standby power. The device was designed toward a week-plus battery-life target, rather than daily charging.",
     "gallery": [
       {
         "src": "assets/projects/low-power-haptic-reminder/01.jpeg",
@@ -53,33 +53,42 @@ window.DEESC_PROJECTS = [
         "original": "Screenshot 2026-08-07 202019.png"
       }
     ],
-    "heroImage": "assets/projects/low-power-haptic-reminder/01.jpeg",
+    "heroImage": "photo-haptic.webp",
     "documents": [],
     "prev": "modular-bldc-senior-project",
-    "next": "edge-detection-camera"
+    "next": "edge-detection-camera",
+    "group": "people",
+    "facts": [
+      [
+        "Footprint",
+        "About 1 × 2 inches"
+      ],
+      [
+        "Reminder",
+        "Every 10 minutes"
+      ],
+      [
+        "Charging",
+        "USB-C"
+      ]
+    ],
+    "outcome": "A complete client prototype was delivered. Week-plus battery life was a design target, not a published endurance-test result."
   },
   {
     "id": "edge-detection-camera",
     "number": "02",
-    "category": "Client Work",
-    "title": "ESP32 + FPGA Edge-Detection Camera",
-    "subtitle": "A standalone image-processing prototype that splits camera control and UI from FPGA-accelerated filtering.",
+    "category": "Other Projects",
+    "title": "Edge-Detection Camera",
+    "subtitle": "A camera that highlights outlines in an image and shows the result on its own screen.",
     "hero": "IMG_2059.jpeg",
     "tags": [
-      "ESP32-S3",
-      "FPGA",
-      "Image Processing",
-      "Custom PCB"
+      "Custom PCB + enclosure",
+      "ESP32 + FPGA"
     ],
     "status": "Delivered client prototype",
-    "overview": "This client requested a self-contained edge-detection camera but intentionally kept the end application confidential. Size was not a primary constraint, so the prototype focused on a clear hardware architecture, accessible interfaces and proving the processing pipeline in a bench-friendly enclosure.",
-    "engineering": [
-      "The ESP32-S3 handles camera/display control and image preprocessing before transferring frame data to a Lattice iCE5LP4K FPGA over SPI.",
-      "The FPGA stores incoming pixels in on-chip memory and applies Haar-style low-pass / high-pass filtering, then returns processed data to the ESP32 for display.",
-      "The hardware supports normal or thermal-image input, including an MLX90641 thermal array interface, plus SD-card storage used to load the FPGA configuration at startup.",
-      "The custom board provides the required 5 V, 3.3 V and 1.2 V rails, external PSRAM, debug access and multiple display/interface options so the prototype could be exercised without redesigning the core PCB."
-    ],
-    "focus": "The project is a hardware/software partitioning exercise: the ESP32 owns the flexible system-level logic while deterministic pixel operations are offloaded to dedicated FPGA fabric.",
+    "overview": "An ESP32 manages the camera and display while an FPGA handles the image filtering. The prototype combines both on a custom PCB in a standalone enclosure.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/edge-detection-camera/01.jpeg",
@@ -120,30 +129,25 @@ window.DEESC_PROJECTS = [
       }
     ],
     "prev": "low-power-haptic-reminder",
-    "next": "low-current-continuity-checker"
+    "next": "low-current-continuity-checker",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "low-current-continuity-checker",
     "number": "03",
-    "category": "Client Work",
-    "title": "Microamp Continuity Checker",
-    "subtitle": "A low-cost continuity tester designed around an extremely small test current and easy through-hole assembly.",
+    "category": "Other Projects",
+    "title": "Low-Current Continuity Tester",
+    "subtitle": "A small tester that beeps when a circuit is connected, using very little test current.",
     "hero": "IMG_2060.jpeg",
     "tags": [
-      "Analog Design",
-      "Current Mirror",
-      "555 Timer",
-      "DFM"
+      "Analog sensing",
+      "Teaching hardware"
     ],
     "status": "Client design for ~200 units",
-    "overview": "A university professor wanted an inexpensive closed-circuit checker that could be reproduced in a roughly 200-unit teaching batch. The key requirement was to inject as little current as practical into the circuit under test while still producing an unmistakable audible indication for a low-impedance path. The client also requested through-hole construction for straightforward hand assembly.",
-    "engineering": [
-      "A 3 V coin cell biases an NPN current-mirror sensing stage through a 1 MΩ resistor, keeping the continuity-test current in the microamp range.",
-      "When the external circuit closes, the mirrored sense signal is conditioned and amplified before enabling the annunciator path.",
-      "A 555-based oscillator generates the piezo tone; transistor gating allows the buzzer return path only when the continuity condition is valid.",
-      "Large banana jacks accommodate common lab leads, while the PCB intentionally favors simple, serviceable through-hole parts over minimum size."
-    ],
-    "focus": "The design turns a tiny electrical test signal into a strong human-readable output without forcing substantial current through the circuit being checked.",
+    "overview": "Designed for a university teaching batch, it uses common through-hole parts that are easy to assemble by hand.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/low-current-continuity-checker/01.jpeg",
@@ -179,30 +183,25 @@ window.DEESC_PROJECTS = [
     "heroImage": "assets/projects/low-current-continuity-checker/01.jpeg",
     "documents": [],
     "prev": "edge-detection-camera",
-    "next": "dual-gym-timer"
+    "next": "dual-gym-timer",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "dual-gym-timer",
     "number": "04",
-    "category": "Client Work",
-    "title": "Dual Garage-Gym Rest Timer",
-    "subtitle": "Two independent two-minute timers built directly into a squat rack for repeatable rest intervals.",
+    "category": "Other Projects",
+    "title": "Two-Person Gym Timer",
+    "subtitle": "Two independent rest timers, built into a squat rack.",
     "hero": "gym timer installed.jpeg",
     "tags": [
-      "ATTiny84",
-      "Battery Charging",
-      "Firmware",
-      "3D CAD"
+      "Embedded timing",
+      "Custom enclosure"
     ],
     "status": "Installed client hardware",
-    "overview": "A gym client wanted a dead-simple way for two people to track rest periods while training together in a garage gym. The device contains two independent two-minute timers and mounts directly into an unused hole in the squat rack, keeping the controls visible without adding another loose accessory to the workout area.",
-    "engineering": [
-      "An ATTiny84A monitors two independent start buttons and runs the timing/state logic for both users.",
-      "Green and blue status channels provide each timer's primary indication, with programmed blink/beep patterns at 30-second intervals and a longer audible cue at the two-minute mark.",
-      "USB-C charging, a TP4056 charger and DW01A + 8205A battery-protection stage support a rechargeable single-cell battery.",
-      "A transistor-driven piezo provides the buzzer output, and a custom 3D-printed enclosure locates the PCB, controls and indicators while mechanically integrating with the rack."
-    ],
-    "focus": "This project is a good example of product integration: the electronics are simple by design, but the usefulness comes from firmware behavior, mechanical fit and an interface that works naturally in the client's environment.",
+    "overview": "Each person gets a start button and a two-minute countdown with light and sound cues. A rechargeable battery and custom enclosure keep it out of the way.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/dual-gym-timer/01.jpeg",
@@ -238,30 +237,25 @@ window.DEESC_PROJECTS = [
     "heroImage": "assets/projects/dual-gym-timer/03.jpeg",
     "documents": [],
     "prev": "low-current-continuity-checker",
-    "next": "dmm-buffer"
+    "next": "dmm-buffer",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "dmm-buffer",
     "number": "05",
-    "category": "Client Work",
-    "title": "Dual DMM Input Buffer",
-    "subtitle": "A two-channel teaching board that demonstrates and corrects voltage-measurement loading error.",
+    "category": "Other Projects",
+    "title": "Multimeter Input Buffer",
+    "subtitle": "A small board that helps a meter measure a circuit without changing the reading.",
     "hero": "dmm buffer irl.jpeg",
     "tags": [
-      "Analog",
-      "OPA2134",
-      "Instrumentation",
-      "Education"
+      "Analog electronics",
+      "Measurement"
     ],
     "status": "University teaching hardware",
-    "overview": "A former professor requested a small board to help students see a measurement problem that is easy to miss: a digital multimeter is not an infinite-impedance observer. On high-resistance nodes, the meter itself becomes part of the circuit and can change the voltage being measured.",
-    "engineering": [
-      "Two OPA2134 channels are configured as unity-gain voltage followers. Each channel presents a high-impedance input to the circuit under test and a low-impedance output to the DMM.",
-      "The buffer isolates the source node from the meter's input resistance, allowing the meter to read the node without materially changing the original divider ratio.",
-      "For example, a 2 V source across a 1 MΩ / 1 MΩ divider ideally produces 1 V. A 10 MΩ DMM loads the lower resistor and pulls the observed result to about 0.952 V; the buffer makes that loading effect negligible.",
-      "The compact two-channel PCB exposes separate source, power and meter connections so the same concept can be demonstrated side-by-side in a lab."
-    ],
-    "focus": "The board is intentionally simple because the circuit itself is the lesson: measurement equipment has electrical consequences, and buffering can separate the instrument from the node being observed.",
+    "overview": "Two buffer channels separate the meter from the circuit being measured. It was built as teaching hardware to demonstrate how instruments can affect sensitive circuits.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/dmm-buffer/01.jpeg",
@@ -287,14 +281,16 @@ window.DEESC_PROJECTS = [
     "heroImage": "assets/projects/dmm-buffer/01.jpeg",
     "documents": [],
     "prev": "dual-gym-timer",
-    "next": "modular-drone-platform"
+    "next": "modular-drone-platform",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "modular-drone-platform",
-    "number": "06",
-    "category": "Portfolio / R&D",
-    "title": "Ground-Up Modular Drone Electronics Platform",
-    "subtitle": "An ongoing 4S multirotor platform built around custom flight, power, RF, GNSS and ESC electronics.",
+    "number": "01",
+    "category": "Selected Work",
+    "title": "Modular Drone Platform",
+    "subtitle": "A custom drone electronics system, from flight control and power distribution to motor drives and communications.",
     "hero": "assy img 1.jpeg",
     "tags": [
       "STM32H7",
@@ -302,16 +298,28 @@ window.DEESC_PROJECTS = [
       "RF",
       "Power Distribution"
     ],
-    "status": "Ongoing R&D project",
-    "overview": "This is an ongoing effort to build a 3-to-7-inch 4S multirotor from the electronics up. Outside of the motors, propellers and live-video subsystem, the major electrical assemblies are custom: flight control, power distribution, GNSS, RF and the 4-in-1 ESC architecture are all being developed as a coordinated system.",
+    "status": "Active development · bench testing",
+    "overview": "I’m developing a modular 4S multirotor platform around my own electronics. The flight controller, power-distribution board, navigation board, radio hardware and motor-control architecture are designed to work together. Motors, propellers and the video system are off-the-shelf components.",
     "engineering": [
-      "The STM32H743-based flight-control board integrates multiple IMUs and barometers, a magnetometer, FRAM, SD storage, CAN, DSHOT outputs and dedicated interfaces for the RF, GNSS and system-level peripherals.",
-      "The power-distribution board measures overall current and battery voltage, communicates system information to the flight controller and can independently switch a 12 V rail used to disable downstream motor-drive hardware.",
-      "The compact GNSS board combines a u-blox M10 receiver with an IST8310 magnetometer; the RF board is based around the Semtech LR2021 for 915 MHz / 2.4 GHz experimentation.",
-      "The 4-in-1 ESC uses a breakaway parent/daughter architecture so the high-current MOSFET power stage can be iterated independently from the MCU / gate-driver control hardware. Early PETG frames were used for fit checks before moving to carbon-fiber structure."
+      "Flight control — an STM32H743 board brings together motion and pressure sensors, storage, CAN and interfaces to the rest of the aircraft.",
+      "Power and propulsion — custom power distribution monitors battery voltage and current. Modular ESC hardware separates motor-control logic from the high-current switching stage.",
+      "Navigation and radio — dedicated GNSS, magnetometer and RF boards support the wider system architecture.",
+      "Integration and testing — frame iterations, board bring-up and a motor thrust fixture support development before flight validation."
     ],
-    "focus": "The project is less about assembling a drone from modules and more about system architecture: power, sensing, control, communications, packaging and serviceability are being designed together.",
+    "focus": "The central challenge is making separate boards behave as one system: clean power, reliable interfaces, useful sensor data and packaging that can be assembled, tested and revised.",
     "gallery": [
+      {
+        "src": "photo-drone-hitl.webp",
+        "caption": "Assembled drone electronics and the companion HITL board. Studio background treatment."
+      },
+      {
+        "src": "photo-drone-bench.webp",
+        "caption": "Custom flight electronics connected to the motor test fixture."
+      },
+      {
+        "src": "photo-thrust-rig.webp",
+        "caption": "Thrust fixture, load-cell interface and measurement wiring."
+      },
       {
         "src": "assets/projects/modular-drone-platform/01.jpeg",
         "caption": "PETG fit-check frame beside the carbon-fiber frame",
@@ -388,18 +396,52 @@ window.DEESC_PROJECTS = [
         "original": "RF PCB.jpeg"
       }
     ],
-    "heroImage": "assets/projects/modular-drone-platform/02.jpeg",
+    "heroImage": "photo-drone-hitl.webp",
     "documents": [],
     "prev": "dmm-buffer",
     "next": "finch-voice-assistant",
-    "documentNote": "Detailed schematics for the flight controller, power-distribution, GNSS, RF and 4-in-1 ESC electronics can be provided to qualified reviewers or prospective collaborators upon signing an NDA."
+    "documentNote": "Detailed schematics for the flight controller, power-distribution, GNSS, RF and 4-in-1 ESC electronics can be provided to qualified reviewers or prospective collaborators upon signing an NDA.",
+    "group": "selected",
+    "facts": [
+      [
+        "Platform",
+        "4S multirotor"
+      ],
+      [
+        "Core MCU",
+        "STM32H743"
+      ],
+      [
+        "Work",
+        "PCB design + integration"
+      ]
+    ],
+    "diagram": [
+      [
+        "Flight controller",
+        "Sensing + control"
+      ],
+      [
+        "Power distribution",
+        "Battery + measurement"
+      ],
+      [
+        "Motor drives",
+        "Logic + power stages"
+      ],
+      [
+        "Navigation / RF",
+        "Position + communications"
+      ]
+    ],
+    "outcome": "Custom assemblies and bench-test hardware are built. Electronics, firmware and motor-control testing are ongoing; flight performance is not yet claimed."
   },
   {
     "id": "finch-voice-assistant",
-    "number": "07",
-    "category": "Portfolio / R&D",
-    "title": "Finch V1 / V2 Voice Assistant Hardware",
-    "subtitle": "Custom ESP32-S3 hardware for a desktop voice assistant, evolving toward a distributed home sensor platform.",
+    "number": "01",
+    "category": "Built for People",
+    "title": "Finch Voice Assistant",
+    "subtitle": "A homemade, Alexa-style voice assistant with custom electronics: speak to it, get an answer, and hear the reply.",
     "hero": "finchv1 AI assistant assy AND finch v2 PCB.jpeg",
     "tags": [
       "ESP32-S3",
@@ -407,15 +449,15 @@ window.DEESC_PROJECTS = [
       "Python",
       "Display + Camera"
     ],
-    "status": "V1 functional / V2 in development",
-    "overview": "Inspired by the movie Finch, the first revision became a homemade desktop voice assistant built around a custom ESP32-S3 audio board and a Python server. V2 expands the concept into a more capable endpoint with local storage, a larger display option, camera support and exposed expansion I/O.",
+    "status": "V1 working · V2 in development",
+    "overview": "Finch brings voice interaction into a small desktop device. A custom ESP32-S3 board captures speech and plays responses through a speaker. A Python service handles speech recognition, the AI response and speech synthesis, so the device can stay compact.",
     "engineering": [
-      "Finch V1 streams microphone audio to a Python service, which coordinates speech-to-text, an OpenAI API response, text-to-speech and the return audio stream to the embedded device.",
-      "The custom board uses an I2S digital microphone, a MAX98357A-class speaker amplifier and a small OLED for connection and request-status feedback.",
-      "Finch V2 adds an SD-card interface to remove the short-message limitation of the original RAM-based audio flow, plus an ILI9341 3.5-inch display option and SPI camera interface.",
-      "The longer-term concept is a group of Wi-Fi endpoints that share one server for voice interaction, camera-based home monitoring, alerts and future GPIO-based add-ons."
+      "Talk and listen — a digital microphone captures the request, while a speaker amplifier plays the response returned by the server.",
+      "Useful feedback — a small display shows connection and request status so the user can see what the device is doing.",
+      "A complete prototype — custom PCB design, embedded audio, Wi-Fi communication and a fitted enclosure work together.",
+      "Next revision — V2 adds SD-card storage, a larger display option and camera connectivity. These are development features, not completed V1 capabilities."
     ],
-    "focus": "The evolution from V1 to V2 shows an embedded product moving from a proof of concept toward a reusable hardware platform with better storage, UI and sensor expansion.",
+    "focus": "The design brings the microphone, speaker, display, firmware and enclosure into one usable object. The next revision focuses on longer messages and a more capable interface.",
     "gallery": [
       {
         "src": "assets/projects/finch-voice-assistant/01.jpeg",
@@ -448,7 +490,7 @@ window.DEESC_PROJECTS = [
         "original": "funch v2 pcb.png"
       }
     ],
-    "heroImage": "assets/projects/finch-voice-assistant/02.jpeg",
+    "heroImage": "photo-finch.webp",
     "documents": [
       {
         "label": "FINCHV2_ESP32 [SH1].pdf",
@@ -456,30 +498,39 @@ window.DEESC_PROJECTS = [
       }
     ],
     "prev": "modular-drone-platform",
-    "next": "stm32f401-dev-board"
+    "next": "stm32f401-dev-board",
+    "group": "people",
+    "facts": [
+      [
+        "Interface",
+        "Voice + display"
+      ],
+      [
+        "Controller",
+        "ESP32-S3"
+      ],
+      [
+        "Status",
+        "Working first revision"
+      ]
+    ],
+    "outcome": "V1 demonstrates the full voice-request and spoken-response flow. V2 is under development."
   },
   {
     "id": "stm32f401-dev-board",
     "number": "08",
-    "category": "Portfolio / R&D",
-    "title": "STM32F401 Multilayer Development Board",
-    "subtitle": "A personal milestone board that moved from simple two-layer PCBs into STM32 and multilayer layout.",
+    "category": "Other Projects",
+    "title": "STM32 Development Board",
+    "subtitle": "A custom microcontroller board for trying out sensors, firmware and new circuits.",
     "hero": "IMG_2081.jpeg",
     "tags": [
-      "STM32F401",
       "Multilayer PCB",
-      "USB-C",
-      "SWD"
+      "STM32"
     ],
     "status": "Learning / portfolio build",
-    "overview": "This board was the first major step beyond simple two-layer microcontroller projects. It was designed as a reusable STM32F401 development and breakout board, exposing the MCU I/O while adding the clocks, power, debug and protection circuitry needed to treat the microcontroller as a complete embedded platform rather than a module.",
-    "engineering": [
-      "USB-C provides the input power path with USB ESD protection, followed by 5 V distribution and an AMS1117 3.3 V regulator.",
-      "The STM32F401RCT6 is supported by both a 25 MHz high-speed crystal and a 32.768 kHz low-speed crystal, local decoupling, BOOT0 control and an SWD programming header.",
-      "GPIO is broken out around the board edge so the hardware can be reused as a general embedded-development platform.",
-      "The project was also the first hands-on exposure to programming STM32 hardware outside the Arduino / ESP32 ecosystems and the first PCB design with more than two copper layers."
-    ],
-    "focus": "It is intentionally kept in the portfolio because it documents the transition from hobby-style controller boards into more disciplined MCU hardware design.",
+    "overview": "The board brings power, clocks, programming connections and accessible I/O together around an STM32F401. It was an early multilayer PCB project.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/stm32f401-dev-board/01.png",
@@ -505,30 +556,25 @@ window.DEESC_PROJECTS = [
     "heroImage": "assets/projects/stm32f401-dev-board/03.jpeg",
     "documents": [],
     "prev": "finch-voice-assistant",
-    "next": "attiny-programmer"
+    "next": "attiny-programmer",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "attiny-programmer",
     "number": "09",
-    "category": "Portfolio / R&D",
-    "title": "Quick ATTiny SMD Programmer",
-    "subtitle": "A small fixture that turns an Arduino into an ISP programmer for surface-mount ATTiny84 / ATTiny85 devices.",
+    "category": "Other Projects",
+    "title": "ATtiny Programming Fixture",
+    "subtitle": "A dedicated board for loading firmware onto small ATtiny chips.",
     "hero": "at tiny programmer irl.jpeg",
     "tags": [
-      "ATTiny",
-      "Arduino ISP",
-      "SPI",
-      "Programming Fixture"
+      "Programming fixture",
+      "Bench tool"
     ],
     "status": "Functional utility board",
-    "overview": "This programming fixture was built when surface-mount ATTiny devices were still the go-to choice for very small embedded projects. Instead of wiring an ISP setup on a breadboard each time, the board provides a repeatable way to program ATTiny84 and ATTiny85 packages directly from an Arduino-based programmer.",
-    "engineering": [
-      "The Arduino runs the ArduinoISP firmware and acts as the in-system programmer rather than the final application controller.",
-      "Digital pins D10-D13 provide target reset plus the SPI programming signals used to shift programming commands and flash data into the ATTiny while it is held in reset.",
-      "Local decoupling and a large capacitor on the Arduino reset line improve programming reliability by preventing unwanted programmer-board auto-reset behavior.",
-      "The first revision uses solder pads for the target devices. A production-minded second revision would replace those pads with SOIC sockets so targets can be inserted and removed without repeated solder rework."
-    ],
-    "focus": "The board solved a real bench-workflow problem and also highlighted a DFM lesson: a fixture that works electrically is not necessarily optimized for repeated use.",
+    "overview": "It replaces repeated breadboard wiring with a reusable connection between an Arduino programmer and the target microcontroller.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/attiny-programmer/01.jpeg",
@@ -554,30 +600,25 @@ window.DEESC_PROJECTS = [
     "heroImage": "assets/projects/attiny-programmer/01.jpeg",
     "documents": [],
     "prev": "stm32f401-dev-board",
-    "next": "rc-car-controller"
+    "next": "rc-car-controller",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "rc-car-controller",
     "number": "10",
-    "category": "Portfolio / R&D",
-    "title": "ATTiny84 RC-Car Motor Controller",
-    "subtitle": "An early custom controller for a four-motor skid-steer RC car using an ATTiny84 and dual H-bridge.",
+    "category": "Other Projects",
+    "title": "RC Car Motor Controller",
+    "subtitle": "A custom board that controls the left and right motors of a small RC car.",
     "hero": "rc car pcb irl.jpeg",
     "tags": [
-      "ATTiny84",
-      "DRV8833",
-      "Brushed DC",
-      "Early PCB"
+      "Motor control",
+      "Embedded firmware"
     ],
     "status": "Functional early prototype",
-    "overview": "This was the second custom PCB in the portfolio and an ambitious jump into motor control. The board was built for a four-wheel-drive RC car, with the left and right motor pairs controlled independently so direction and steering could be produced without a mechanical steering linkage.",
-    "engineering": [
-      "An ATTiny84 generates the control logic for a DRV8833 dual H-bridge, with each bridge channel driving one side of the vehicle.",
-      "Four motor connectors fan the two H-bridge outputs out to the left and right motor pairs, while a header accepts a COTS RF receiver module used with the matching handheld transmitter.",
-      "The electrical design did perform its intended control function, but the mechanical wheel-to-motor interface became the dominant failure point in the complete vehicle.",
-      "Looking back, the two-layer layout and lack of a proper ground plane are clear early-design limitations. The project remains useful because it shows exactly what later PCB revisions improved: return paths, layout discipline, mechanics and design-for-assembly."
-    ],
-    "focus": "Rather than hiding the rough edges, this project is presented as an engineering retrospective - a working early design that makes the progression to later hardware obvious.",
+    "overview": "An ATtiny and dual motor driver provide speed and direction control. This early prototype combined motor electronics with a radio receiver.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/rc-car-controller/01.png",
@@ -603,30 +644,25 @@ window.DEESC_PROJECTS = [
     "heroImage": "assets/projects/rc-car-controller/03.jpeg",
     "documents": [],
     "prev": "attiny-programmer",
-    "next": "rf-development-board"
+    "next": "rf-development-board",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "rf-development-board",
     "number": "11",
-    "category": "Portfolio / R&D",
-    "title": "STM32WL Sub-GHz RF Development Board",
-    "subtitle": "A documentation-heavy RF learning platform with custom front-end matching, dual MCUs and onboard sensors.",
+    "category": "Other Projects",
+    "title": "Sub-GHz Radio Board",
+    "subtitle": "A custom development board for experimenting with wireless links and sensors.",
     "hero": "RF brd IRL.jpeg",
     "tags": [
-      "STM32WL55",
-      "868 MHz RF",
-      "Sensors",
-      "Power Protection"
+      "RF design",
+      "Sensor interfaces"
     ],
     "status": "Portfolio RF platform",
-    "overview": "This board marked the point where the schematic and layout process became much more deliberate. The goal was to step outside familiar digital/embedded work and build a proper RF-oriented development platform while practicing datasheet-driven design, power partitioning, interface planning and professional schematic documentation.",
-    "engineering": [
-      "The primary STM32WL55CCU6 combines an MCU and sub-GHz radio. Its RF path includes selectable PA supply configuration, an RF switch and discrete matching networks centered around an 868 MHz antenna interface.",
-      "A 32 MHz TCXO supports the RF clock domain and a 32.768 kHz crystal supports low-power timing. Dedicated decoupling and supply filtering separate sensitive RF rails.",
-      "The board adds an MPU6050 IMU, MMC5983MA 3-axis magnetometer and W25Q16 flash memory for sensor/interface development over I2C and SPI.",
-      "Battery input protection, buck-boost regulation, SWD/UART access and a secondary STM32F401RCT6 with exposed I/O turn the board into a broad embedded/RF experimentation platform rather than a single-purpose radio node."
-    ],
-    "focus": "The project is as much about engineering process as hardware: reading reference designs, organizing schematic sheets, treating RF and power as separate design problems and making interfaces explicit before layout.",
+    "overview": "An STM32WL radio, sensor interfaces and battery-power circuitry create a platform for RF and embedded development.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/rf-development-board/01.jpeg",
@@ -642,30 +678,25 @@ window.DEESC_PROJECTS = [
       }
     ],
     "prev": "rc-car-controller",
-    "next": "modular-bldc-senior-project"
+    "next": "modular-bldc-senior-project",
+    "group": "other",
+    "outcome": ""
   },
   {
     "id": "modular-bldc-senior-project",
     "number": "12",
-    "category": "Portfolio / R&D",
-    "title": "Modular Stackable BLDC Motor-Control Platform",
-    "subtitle": "A senior-design team project exploring a reusable ESC architecture with stackable motor channels, telemetry and protection.",
+    "category": "Other Projects",
+    "title": "Stackable Motor Controllers",
+    "subtitle": "A team-designed system of motor-control modules that can be stacked as the motor count grows.",
     "hero": "Final motor test stand.png",
     "tags": [
-      "STM32G4",
-      "BLDC",
-      "CAN Bus",
-      "Modular Hardware"
+      "Senior design team",
+      "Motor electronics"
     ],
     "status": "Senior design team prototype",
-    "overview": "The senior design project addressed a common limitation of electronic speed controllers: most are built for a fixed motor count and a narrow application. The team proposed a stackable architecture where identical motor-control modules could be added or removed while sharing a standardized power, control and communications backbone.",
-    "engineering": [
-      "The logic board centers on an STM32G474, selected for advanced motor-control timers, ADC resources and CAN connectivity. Separate driver/power boards handle the three BLDC half-bridges, gate-drive functions and motor-phase current paths.",
-      "Current sensing, board-temperature sensing and driver fault reporting provide the feedback needed for telemetry and fault handling, while CAN links the motor modules to the higher-level diagnostic/control electronics.",
-      "A companion RF/diagnostic subsystem and ESP32-S3 remote were developed to send commands and display per-motor telemetry such as current, RPM, temperature and fault state.",
-      "The mechanical test platform was designed around four BLDC motors, a 4S/6S battery, multiple stacked PCBs and a protected enclosure so the electrical architecture could be exercised as a complete bench system."
-    ],
-    "focus": "The strongest part of this project is the system-level decomposition: high-current switching, real-time control, diagnostics, communications, power protection and mechanical stacking were treated as separate modules with defined interfaces.",
+    "overview": "The senior-design prototype separates motor-control logic, high-current electronics and communications into connected boards. The bench assembly brings the modules together for testing.",
+    "engineering": [],
+    "focus": "",
     "gallery": [
       {
         "src": "assets/projects/modular-bldc-senior-project/01.png",
@@ -744,15 +775,121 @@ window.DEESC_PROJECTS = [
         "href": "assets/docs/modular-bldc-senior-project--EE400D_CDR-Deesc.pdf"
       },
       {
-        "label": "FINCHV2_ESP32 [SH1].pdf",
-        "href": "assets/docs/modular-bldc-senior-project--FINCHV2_ESP32-SH1-.pdf"
-      },
-      {
         "label": "MCU_EE400D.pdf",
         "href": "assets/docs/modular-bldc-senior-project--MCU_EE400D.pdf"
       }
     ],
     "prev": "rf-development-board",
-    "next": "low-power-haptic-reminder"
+    "next": "low-power-haptic-reminder",
+    "group": "other",
+    "outcome": ""
+  },
+  {
+    "id": "hitl-test-platform",
+    "number": "02",
+    "category": "Selected Work",
+    "group": "selected",
+    "title": "HITL Test Platform",
+    "subtitle": "A custom control and measurement board that puts drone electronics on a repeatable, computer-connected test bench.",
+    "status": "Working bench platform · ongoing development",
+    "heroImage": "photo-hitl-bench.webp",
+    "tags": [
+      "Test engineering",
+      "STM32H743",
+      "Ethernet",
+      "Custom PCB"
+    ],
+    "overview": "HITL means Human in the Loop here. I designed the board to make drone development easier to observe and control from a computer: select signal paths, send test commands and collect measurements while keeping the operator involved.",
+    "focus": "It connects the hardware being developed to the tools needed to understand it. Instead of checking each board in isolation, the bench brings control, measurement and recorded results into the same workflow.",
+    "engineering": [
+      "Custom test hardware — a six-layer, 90 × 65 mm PCB brings an STM32H743, W5500 Ethernet, signal switching and accessible peripheral connections together.",
+      "Computer-connected control — an Ethernet console selects signal routes and sends commands for bench development, including DShot motor-control signals.",
+      "Measurement and logging — the test workflow supports rotor-angle/RPM observation, power-board voltage and current acquisition, and CSV exports for comparing runs.",
+      "A physical test system — the board works alongside custom ESC and power hardware, a motor fixture and thrust-measurement electronics."
+    ],
+    "facts": [
+      [
+        "PCB",
+        "6 layers"
+      ],
+      [
+        "Board size",
+        "90 × 65 mm"
+      ],
+      [
+        "Connection",
+        "Ethernet"
+      ]
+    ],
+    "diagram": [
+      [
+        "Desktop console",
+        "Commands + observations"
+      ],
+      [
+        "HITL board",
+        "Signal routing + acquisition"
+      ],
+      [
+        "Hardware under test",
+        "Flight / power / motor"
+      ],
+      [
+        "Test records",
+        "Measurements + CSV"
+      ]
+    ],
+    "outcome": "The board has been brought up and used in the motor-test workflow. Signal-emulation profiles and broader integration continue to evolve; measurement scaling and test conditions matter when comparing results.",
+    "gallery": [
+      {
+        "src": "photo-hitl-bench.webp",
+        "caption": "HITL board powered and connected during bench testing."
+      },
+      {
+        "src": "photo-hitl-bringup.webp",
+        "caption": "Board bring-up with Ethernet and a debug connection."
+      },
+      {
+        "src": "photo-hitl-cad.webp",
+        "caption": "HITL component placement and connector arrangement in Altium."
+      },
+      {
+        "src": "photo-hitl-layout.webp",
+        "caption": "Six-layer board layout with the 90 × 65 mm outline."
+      },
+      {
+        "src": "photo-drone-bench.webp",
+        "caption": "The surrounding motor-control test setup."
+      },
+      {
+        "src": "photo-thrust-rig.webp",
+        "caption": "Load-cell fixture and measurement electronics."
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "esp32-fpga-development-board",
+    "title": "ESP32 + FPGA Development Board",
+    "category": "Other Projects",
+    "group": "other",
+    "number": "10",
+    "subtitle": "A hands-on board for experimenting with a microcontroller and programmable digital logic together.",
+    "overview": "The ESP32-S3 and FPGA share a custom board with accessible connectors and SD-card storage. A separate switch-and-LED panel provides a simple physical interface for experiments.",
+    "status": "Development hardware",
+    "heroImage": "photo-fpga-board.webp",
+    "tags": [
+      "ESP32-S3",
+      "FPGA"
+    ],
+    "engineering": [],
+    "focus": "",
+    "gallery": [
+      {
+        "src": "photo-fpga-board.webp",
+        "caption": "Custom ESP32 + FPGA board with a switch-and-LED test panel."
+      }
+    ],
+    "documents": []
   }
 ];

@@ -1,125 +1,65 @@
-const projects = window.DEESC_PROJECTS || [];
-const id = new URLSearchParams(location.search).get('id') || projects[0]?.id;
-const p = projects.find(x => x.id === id) || projects[0];
-const prev = projects.find(x => x.id === p.prev);
-const next = projects.find(x => x.id === p.next);
-
-document.title = `${p.title} | DEESC Prototyping`;
-
-const hasDocs = Boolean(p.documents?.length);
-const hasDocNote = Boolean(p.documentNote);
-const sourceDocuments = (hasDocs || hasDocNote) ? `
-<section class="source-docs-section">
-  <div class="container">
-    <div class="source-docs-card">
-      <div class="source-docs-header">
-        <div class="source-docs-mark" aria-hidden="true">⌁</div>
-        <div>
-          <p class="kicker">SOURCE DOCUMENTS</p>
-          <h2>${hasDocs ? 'Schematics & project files.' : 'Detailed schematics available.'}</h2>
-          <p>${hasDocs ? 'Open the original engineering documents used for this project.' : p.documentNote}</p>
-        </div>
-      </div>
-      ${hasDocNote && hasDocs ? `<div class="nda-note"><span>LOCKED / NDA</span><p>${p.documentNote}</p></div>` : ''}
-      ${hasDocs ? `<div class="doc-links">${p.documents.map(d => `
-        <a href="${d.href}" target="_blank" rel="noopener">
-          <span class="doc-file-type">PDF</span>
-          <span class="doc-file-name">${d.label}</span>
-          <span class="doc-open">OPEN DOCUMENT ↗</span>
-        </a>`).join('')}</div>` : `
-        <div class="nda-note standalone">
-          <span>LOCKED / NDA</span>
-          <p>Contact DEESC to request access.</p>
-          <a href="mailto:thomasstolpe424@gmail.com?subject=DEESC%20Drone%20Schematics%20NDA">REQUEST SCHEMATICS →</a>
-        </div>`}
-    </div>
-  </div>
-</section>` : '';
-
-const mount = document.querySelector('#projectMount');
-mount.innerHTML = `
-<section class="project-hero tech-grid-bg">
-  <div class="container project-hero-grid">
-    <div class="project-hero-copy">
-      <a class="back-link" href="index.html#${p.category === 'Client Work' ? 'client-work' : 'portfolio'}">← Back to projects</a>
-      <p class="kicker">${p.category.toUpperCase()} / ${p.number}</p>
-      <h1>${p.title}</h1>
-      <p class="project-subtitle">${p.subtitle}</p>
-      <div class="tags large-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
-      <div class="project-status"><span>PROJECT STATUS</span><b>${p.status}</b></div>
-    </div>
-    <div class="project-hero-image${p.id === 'edge-detection-camera' ? ' centered-contain' : ''}"><img src="${p.heroImage}" alt="${p.title}"><span>${p.number}</span></div>
-  </div>
-</section>
-<section class="section">
-  <div class="container case-grid">
-    <article class="case-copy">
-      <p class="kicker">PROJECT OVERVIEW</p>
-      <h2>The problem and the build.</h2>
-      <p class="lead">${p.overview}</p>
-      <p>${p.focus}</p>
-    </article>
-    <aside class="case-side">
-      <p class="kicker">ENGINEERING</p>
-      ${p.engineering.map((x, i) => `<div class="engineering-point"><span>${String(i + 1).padStart(2, '0')}</span><p>${x}</p></div>`).join('')}
-    </aside>
-  </div>
-</section>
-${sourceDocuments}
-<section class="section gallery-section">
-  <div class="container">
-    <div class="section-heading">
-      <div><p class="kicker">BUILD GALLERY / ${String(p.gallery.length).padStart(2, '0')} IMAGES</p><h2>Hardware, layout and design detail.</h2></div>
-      <p>Every project image supplied for the portfolio is included here. Click any image to inspect it full-size.</p>
-    </div>
-    <div class="gallery-grid">${p.gallery.map((g, i) => `<button class="gallery-item" data-index="${i}" aria-label="Open image: ${g.caption.replace(/"/g, '&quot;')}"><img src="${g.src}" alt="${g.caption}" loading="lazy"><span>${g.caption}</span></button>`).join('')}</div>
-  </div>
-</section>
-<section class="project-nav">
-  <div class="container project-nav-grid">
-    <a href="project.html?id=${prev.id}"><span>← PREVIOUS</span><b>${prev.title}</b></a>
-    <a class="next" href="project.html?id=${next.id}"><span>NEXT →</span><b>${next.title}</b></a>
-  </div>
-</section>`;
-
-document.querySelector('#year').textContent = new Date().getFullYear();
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.main-nav');
-if (toggle) {
-  toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    nav.classList.toggle('open', !open);
+(() => {
+  'use strict';
+  const projects = window.DEESC_PROJECTS || [];
+  const id = new URLSearchParams(location.search).get('id');
+  const p = projects.find(item => item.id === id);
+  const mount = document.querySelector('#projectMount');
+  const e = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  if (!p) {
+    document.title = 'Project not found | DEESC Prototyping';
+    mount.innerHTML = '<section class="container page-intro error-page"><p class="eyebrow">PROJECT NOT FOUND</p><h1>Let’s get you<br>back to the work.</h1><p>This project link is missing or no longer available.</p><a class="button primary" href="index.html">View selected work <span>↗</span></a></section>';
+    return;
+  }
+  const groupPages = {selected:['index.html#selected-work','Selected work'],people:['people.html','Built for people'],other:['projects.html','Other projects']};
+  const [backUrl,backLabel] = groupPages[p.group] || groupPages.other;
+  document.querySelectorAll('.main-nav a').forEach(link => {
+    if (link.getAttribute('href') === backUrl.split('#')[0]) link.setAttribute('aria-current','page');
   });
-}
-
-const lb = document.querySelector('#lightbox');
-const lbImg = document.querySelector('#lightboxImage');
-const lbCap = document.querySelector('#lightboxCaption');
-let current = 0;
-function show(i) {
-  current = (i + p.gallery.length) % p.gallery.length;
-  const g = p.gallery[current];
-  lbImg.src = g.src;
-  lbImg.alt = g.caption;
-  lbCap.textContent = g.caption;
-  lb.classList.add('open');
-  lb.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('no-scroll');
-}
-function close() {
-  lb.classList.remove('open');
-  lb.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('no-scroll');
-}
-document.querySelectorAll('.gallery-item').forEach(b => b.addEventListener('click', () => show(Number(b.dataset.index))));
-document.querySelector('.lightbox-close').addEventListener('click', close);
-document.querySelector('.lightbox-prev').addEventListener('click', () => show(current - 1));
-document.querySelector('.lightbox-next').addEventListener('click', () => show(current + 1));
-lb.addEventListener('click', e => { if (e.target === lb) close(); });
-document.addEventListener('keydown', e => {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') close();
-  if (e.key === 'ArrowLeft') show(current - 1);
-  if (e.key === 'ArrowRight') show(current + 1);
-});
+  document.title = `${p.title} | DEESC Prototyping`;
+  document.querySelector('meta[name="description"]').content = p.subtitle;
+  document.querySelector('meta[property="og:title"]').content = document.title;
+  document.querySelector('meta[property="og:description"]').content = p.subtitle;
+  document.querySelector('link[rel="canonical"]').href = `https://deescproto.com/project.html?id=${encodeURIComponent(p.id)}`;
+  const isSmall = p.group === 'other';
+  const gallery = p.gallery || [];
+  const documents = p.documents || [];
+  const next = projects.find(item => item.group === p.group && item.id !== p.id);
+  mount.innerHTML = `
+    <section class="case-hero"><div class="container"><a class="back-link" href="${backUrl}">← ${backLabel}</a>
+    <div class="case-hero-grid"><div><p class="eyebrow">${e(p.category).toUpperCase()}</p><h1>${e(p.title)}</h1><p class="case-subtitle">${e(p.subtitle)}</p><div class="tags">${p.tags.map(tag=>`<span>${e(tag)}</span>`).join('')}</div><p class="case-status">${e(p.status)}</p></div>
+    <figure class="case-hero-image${p.id === 'edge-detection-camera' ? ' contain' : ''}"><img src="${e(p.heroImage)}" alt="${e(p.title)}" fetchpriority="high"></figure></div></div></section>
+    ${p.facts?.length ? `<dl class="container facts">${p.facts.map(([label,value])=>`<div><dt>${e(label)}</dt><dd>${e(value)}</dd></div>`).join('')}</dl>` : ''}
+    <section class="container case-section">${isSmall ? `<article class="case-simple"><p class="eyebrow">THE IDEA</p><h2>What it does.</h2><p>${e(p.overview)}</p></article>` : `
+    <div class="case-grid"><article><p class="eyebrow">THE PROJECT</p><h2>${p.group === 'selected' ? 'A system with a purpose.' : 'Designed around everyday use.'}</h2><p class="case-overview">${e(p.overview)}</p><p class="case-focus">${e(p.focus)}</p></article>
+    <aside aria-label="Engineering details"><p class="eyebrow">INSIDE THE BUILD</p><ol class="engineering-list">${p.engineering.map((point,i)=>`<li><span>${String(i+1).padStart(2,'0')}</span><p>${e(point)}</p></li>`).join('')}</ol></aside></div>
+    ${p.diagram?.length ? `<div class="architecture"><p class="eyebrow">${p.id === 'hitl-test-platform' ? 'THE TEST WORKFLOW' : 'THE SYSTEM AT A GLANCE'}</p><div class="system-flow">${p.diagram.map(([title,desc],i)=>`<div class="system-node"><span>0${i+1}</span><h3>${e(title)}</h3><p>${e(desc)}</p></div>`).join('')}</div></div>` : ''}
+    ${p.outcome ? `<div class="outcome"><p class="eyebrow">CURRENT STATE</p><p>${e(p.outcome)}</p></div>` : ''}`}</section>
+    ${documents.length || p.documentNote ? `<section class="container docs-section"><div class="docs-box"><p class="eyebrow">DESIGN DOCUMENTS</p><h2>${documents.length ? 'A closer look at the design.' : 'Want to discuss the design?'}</h2>${p.documentNote ? `<p>${e(p.documentNote)}</p>` : ''}<div class="doc-links">${documents.map(doc=>`<a href="${e(doc.href)}" target="_blank" rel="noopener noreferrer">${e(doc.label.replace(/_/g,' ').replace('.pdf',''))}<span>PDF ↗</span></a>`).join('')}${!documents.length ? '<a href="mailto:thomasstolpe424@gmail.com?subject=DEESC%20Project%20Details">Contact Thomas <span>↗</span></a>' : ''}</div></div></section>` : ''}
+    <section class="container gallery-section"><div class="gallery-heading"><div><p class="eyebrow">FROM DESIGN TO HARDWARE / ${String(gallery.length).padStart(2,'0')} IMAGES</p><h2>The build, up close.</h2></div><p>Select a photo to inspect it. Use arrow keys to browse.</p></div><div class="gallery-grid">${gallery.map((g,i)=>`<button class="gallery-item" data-index="${i}" data-technical="${/schematic|layout|routing|render|CAD|Altium|stage|circuit/i.test(g.caption)}" aria-label="Open image: ${e(g.caption)}"><img src="${e(g.src)}" alt="${e(g.caption)}" loading="lazy"><span>${e(g.caption)}</span></button>`).join('')}</div></section>
+    ${next ? `<nav class="container project-related" aria-label="Related project"><span>EXPLORE MORE</span><a href="project.html?id=${encodeURIComponent(next.id)}">${e(next.title)} <span aria-hidden="true">↗</span></a></nav>` : ''}`;
+  const dialog = document.querySelector('#lightbox');
+  const image = document.querySelector('#lightboxImage');
+  const caption = document.querySelector('#lightboxCaption');
+  const count = document.querySelector('#lightboxCount');
+  let current = 0;
+  let opener = null;
+  function show(index) {
+    current = (index + gallery.length) % gallery.length;
+    const g = gallery[current];
+    image.src = g.src; image.alt = g.caption; caption.textContent = g.caption;
+    count.textContent = `${current+1} / ${gallery.length}`;
+    if (!dialog.open) { dialog.showModal(); document.body.classList.add('no-scroll'); }
+  }
+  document.querySelectorAll('.gallery-item').forEach(button => button.addEventListener('click', () => {
+    opener = button; show(Number(button.dataset.index));
+  }));
+  dialog.querySelector('.lightbox-close').addEventListener('click', () => dialog.close());
+  dialog.querySelector('.lightbox-prev').addEventListener('click', () => show(current-1));
+  dialog.querySelector('.lightbox-next').addEventListener('click', () => show(current+1));
+  dialog.addEventListener('close', () => { document.body.classList.remove('no-scroll'); opener?.focus(); });
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); show(current-1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); show(current+1); }
+  });
+})();

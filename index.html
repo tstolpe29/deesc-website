@@ -1,63 +1,25 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DEESC Prototyping - custom electronics, embedded systems, PCB design and rapid prototyping.">
-  <title>DEESC Prototyping | Hardware From Idea to Prototype</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header class="site-header" id="top">
-  <div class="container nav-wrap">
-    <a class="brand" href="#top" aria-label="DEESC Prototyping home"><img src="assets/brand/deesc-wordmark-blue.png" alt="DEESC"><span>PROTOTYPING</span></a>
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="main-nav"><a class="active" href="#top">Home</a><a href="#client-work">Client Work</a><a href="#portfolio">Portfolio</a><a href="#capabilities">Capabilities</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-  </div>
-</header>
-<main>
-  <section class="hero tech-grid-bg">
-    <div class="container hero-grid">
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span></span> ELECTRICAL ENGINEERING / PROTOTYPE DEVELOPMENT</div>
-        <h1>Ideas become<br><strong>working hardware.</strong></h1>
-        <p class="hero-lede">Custom electronics, embedded systems, PCB design and rapid prototyping - from first architecture through bench-tested hardware.</p>
-        <div class="hero-actions"><a class="button primary" href="#client-work">View Client Work <b>→</b></a><a class="button secondary" href="mailto:thomasstolpe424@gmail.com?subject=DEESC%20Project%20Inquiry">Start a Project <b>↗</b></a></div>
-        <div class="hero-stats"><div><b>5</b><span>PAID CLIENT PROJECTS</span></div><div><b>7</b><span>PORTFOLIO / R&amp;D BUILDS</span></div><div><b>12</b><span>PROJECTS DOCUMENTED</span></div></div>
-      </div>
-      <div class="hero-art reveal" aria-hidden="true"><div class="circuit-field"></div><div class="chip-halo"></div><img src="assets/brand/deesc-chip-blue.png" alt=""><div class="spec spec-a"><span>SCHEMATIC</span><b>DESIGN</b></div><div class="spec spec-b"><span>PCB</span><b>LAYOUT</b></div><div class="spec spec-c"><span>HARDWARE</span><b>BRING-UP</b></div></div>
-    </div>
-  </section>
-
-  <section class="section" id="client-work"><div class="container">
-    <div class="section-heading reveal"><div><p class="kicker">CLIENT WORK / 05</p><h2>Hardware built for real people.</h2></div><p>Paid projects ranging from ultra-low-power embedded devices to FPGA image processing and analog instrumentation.</p></div>
-    <div class="project-grid client-grid" id="clientGrid"></div>
-  </div></section>
-
-  <section class="section portfolio-section tech-grid-bg" id="portfolio"><div class="container">
-    <div class="section-heading reveal"><div><p class="kicker">PORTFOLIO + R&amp;D / 07</p><h2>Where the difficult stuff gets explored.</h2></div><p>Independent and academic builds covering motor control, RF, embedded audio, custom development hardware and system integration.</p></div>
-    <div class="project-grid portfolio-grid" id="portfolioGrid"></div>
-  </div></section>
-
-  <section class="section" id="capabilities"><div class="container">
-    <div class="section-heading reveal"><div><p class="kicker">CAPABILITIES</p><h2>From schematic to working prototype.</h2></div><p>The project mix spans embedded, analog, power, RF, firmware, CAD and test - with the hardware integration work tying it together.</p></div>
-    <div class="capability-grid">
-      <article class="capability-card reveal"><span class="cap-num">01</span><div class="cap-icon">⌁</div><h3>PCB Design</h3><p>Schematic capture, multilayer layout, component selection, power distribution and manufacturing handoff.</p><small>ALTIUM / DFM / LAYOUT</small></article>
-      <article class="capability-card reveal"><span class="cap-num">02</span><div class="cap-icon">&lt;/&gt;</div><h3>Embedded Firmware</h3><p>MCU bring-up, state machines, low-power behavior, peripheral interfaces and device control.</p><small>STM32 / ESP32 / ATTINY</small></article>
-      <article class="capability-card reveal"><span class="cap-num">03</span><div class="cap-icon">ϟ</div><h3>Power + Motor Control</h3><p>Battery systems, regulation, current sensing, MOSFET switching and brushed / BLDC motor electronics.</p><small>POWER / BLDC / BATTERY</small></article>
-      <article class="capability-card reveal"><span class="cap-num">04</span><div class="cap-icon">⌁</div><h3>Analog + Instrumentation</h3><p>Signal conditioning, op-amp circuits, current mirrors, sensing and measurement-interface hardware.</p><small>ANALOG / SENSING / TEST</small></article>
-      <article class="capability-card reveal"><span class="cap-num">05</span><div class="cap-icon">⌁⌁</div><h3>RF + Communications</h3><p>Sub-GHz RF experimentation, UART, SPI, I²C, CAN and system-level communications interfaces.</p><small>RF / CAN / SPI / UART</small></article>
-      <article class="capability-card reveal"><span class="cap-num">06</span><div class="cap-icon">⬡</div><h3>Mechanical Integration</h3><p>Enclosures, PCB fit checks, 3D printing, rack / fixture integration and prototype packaging.</p><small>CAD / PRINT / INTEGRATE</small></article>
-    </div>
-  </div></section>
-
-  <section class="section about-section tech-grid-bg" id="about"><div class="container about-grid">
-    <div class="about-copy reveal"><p class="kicker">ABOUT DEESC</p><h2>Engineering work that leaves the screen.</h2><p>DEESC Prototyping is focused on custom electronic hardware and the messy middle between an idea and a useful physical prototype. That can mean a compact PCB, embedded firmware, a test fixture, an enclosure, a power system, or a complete assembly that has to survive real bench testing.</p><p>The portfolio intentionally includes both finished client work and earlier R&amp;D projects. Together they show the progression from basic microcontroller boards into multilayer PCB design, RF, FPGA processing, motor control and integrated systems.</p></div>
-    <div class="workflow-card reveal"><div class="workflow-head"><span>DEESC / PROCESS</span><small>CONCEPT → HARDWARE</small></div><div class="workflow-row"><b>01</b><div><h3>Define</h3><p>Translate the use case into electrical, mechanical and interface requirements.</p></div></div><div class="workflow-row"><b>02</b><div><h3>Design</h3><p>Capture the schematic, lay out the PCB, write firmware and integrate mechanics.</p></div></div><div class="workflow-row"><b>03</b><div><h3>Build</h3><p>Assemble, bring up, instrument and debug the physical prototype.</p></div></div><div class="workflow-row"><b>04</b><div><h3>Iterate</h3><p>Use test data and failure modes to drive the next revision.</p></div></div></div>
-  </div></section>
-
-  <section class="cta-section" id="contact"><div class="container"><div class="cta-card reveal"><div><p class="kicker">START A PROJECT</p><h2>Have something you want to build?</h2><p>Send the problem, constraints, current design state and whatever files you already have.</p></div><a class="button primary large" href="mailto:thomasstolpe424@gmail.com?subject=DEESC%20Project%20Inquiry">thomasstolpe424@gmail.com <b>↗</b></a></div></div></section>
-</main>
-<footer class="site-footer"><div class="container footer-grid"><a class="footer-brand" href="#top"><img src="assets/brand/deesc-wordmark-blue.png" alt="DEESC"><span>PROTOTYPING</span></a><p>© <span id="year"></span> DEESC Prototyping</p><a href="mailto:thomasstolpe424@gmail.com">thomasstolpe424@gmail.com</a></div></footer>
-<script src="projects-data.js"></script><script src="script.js"></script>
-</body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0a1018"><meta name="description" content="Custom drone electronics and the HITL test platform. PCB design, embedded firmware, system integration and bench testing by Thomas Stolpe."><title>Thomas Stolpe — Electronics &amp; Embedded Systems | DEESC Prototyping</title><link rel="icon" href="assets/brand/deesc-chip-blue.png"><link rel="canonical" href="https://deescproto.com/"><meta property="og:type" content="website"><meta property="og:title" content="Thomas Stolpe — Electronics &amp; Embedded Systems | DEESC Prototyping"><meta property="og:description" content="Custom drone electronics and the HITL test platform. PCB design, embedded firmware, system integration and bench testing by Thomas Stolpe."><meta property="og:image" content="https://deescproto.com/photo-drone-hitl.webp"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="styles.css?v=20261031"><link rel="preload" as="image" href="photo-drone-hitl.webp"></head><body>
+<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-wrap">
+ <a class="brand" href="index.html" aria-label="DEESC Prototyping home"><img src="assets/brand/deesc-wordmark-blue.png" width="151" height="39" alt="DEESC"><span>PROTOTYPING</span></a>
+ <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span>Menu</span><span class="menu-icon" aria-hidden="true">☰</span></button>
+ <nav class="main-nav" id="main-nav" aria-label="Main navigation"><a href="index.html" aria-current="page">Selected Work</a><a href="people.html">Built for People</a><a href="projects.html">Other Projects</a><a href="about.html">About / Contact</a></nav></div></header><main id="main">
+<section class="hero" aria-labelledby="hero-title">
+ <img class="hero-photo" src="photo-drone-hitl.webp" alt="Custom drone electronics and the blue HITL test board on a charcoal studio background" width="1448" height="1086" fetchpriority="high">
+ <div class="hero-shade"></div>
+ <div class="container hero-copy"><p class="eyebrow"><span class="small-line"></span> THOMAS STOLPE / ELECTRICAL ENGINEERING</p>
+ <h1 id="hero-title">From circuit design<br>to <em>real hardware.</em></h1>
+ <p class="hero-lede">Custom electronics. Embedded systems. The test tools<br class="desktop-break"> that turn a design into something you can prove.</p>
+ <a class="button primary" href="#selected-work">Explore the work <span aria-hidden="true">↓</span></a></div>
+ <div class="hero-caption container"><span>ON THE BENCH</span><span>Modular drone + HITL platform</span><span>01 / 02</span></div>
+</section>
+<div class="discipline-strip"><div class="container"><span>SCHEMATIC & PCB DESIGN</span><i></i><span>EMBEDDED FIRMWARE</span><i></i><span>SYSTEM INTEGRATION</span><i></i><span>BENCH TESTING</span></div></div>
+<section class="section selected-work" id="selected-work"><div class="container">
+ <div class="section-heading"><div><p class="eyebrow">SELECTED WORK / 01—02</p><h2>Build the system.<br><span class="muted">Build the way to test it.</span></h2></div><p>Two connected projects, from custom flight electronics to the bench that helps bring them up.</p></div>
+ <article class="feature feature-drone"><a class="feature-visual" href="project.html?id=modular-drone-platform" aria-label="Explore the Modular Drone Platform"><img src="photo-drone-bench.webp" width="1170" height="888" loading="lazy" alt="Custom drone electronics wired into a motor test fixture"><span class="photo-label">MODULAR DRONE / BENCH INTEGRATION</span><span class="image-arrow" aria-hidden="true">↗</span></a>
+ <div class="feature-copy"><div class="feature-top"><span class="index-number">01</span><span class="status"><i></i> IN DEVELOPMENT</span></div><p class="eyebrow">MODULAR DRONE PLATFORM</p><h3>A drone, built from<br>the electronics up.</h3><p>Custom flight control, power distribution, motor drives and communications—designed as parts of one coordinated system.</p><ul class="detail-lines"><li>STM32H743 flight controller and sensor integration</li><li>Modular power and motor-control hardware</li><li>Board bring-up, packaging and bench testing</li></ul><a class="text-link" href="project.html?id=modular-drone-platform">Inside the drone project <span aria-hidden="true">↗</span></a></div></article>
+ <article class="feature feature-hitl"><a class="feature-visual" href="project.html?id=hitl-test-platform" aria-label="Explore the HITL Test Platform"><img src="photo-hitl-bench.webp" width="1536" height="1152" loading="lazy" alt="Powered HITL test board connected to the motor-control bench"><span class="photo-label">HITL / CONTROL + MEASUREMENT</span><span class="image-arrow" aria-hidden="true">↗</span></a>
+ <div class="feature-copy"><div class="feature-top"><span class="index-number">02</span><span class="status"><i></i> ON THE BENCH</span></div><p class="eyebrow">HUMAN IN THE LOOP / HITL</p><h3>The test bench<br>behind the hardware.</h3><p>A custom board and computer interface for controlling test signals, observing hardware and recording what happens.</p><ul class="detail-lines"><li>Six-layer STM32H743 board with Ethernet</li><li>Signal routing and motor-test controls</li><li>Measurement capture and CSV logging</li></ul><a class="text-link" href="project.html?id=hitl-test-platform">Explore the test platform <span aria-hidden="true">↗</span></a></div></article>
+</div></section>
+<section class="approach-band"><div class="container approach-inner"><p class="eyebrow">THE APPROACH</p><h2>Design it. Build it.<br><span>Put it on the bench.</span></h2><p>My work connects board design, embedded firmware and physical testing. The result is a portfolio of hardware you can inspect, with a clear view of what’s built and what’s next.</p></div></section>
+</main><footer class="site-footer"><div class="container"><div class="footer-top"><div><p class="eyebrow">LET’S TALK HARDWARE</p><a class="footer-hello" href="mailto:thomasstolpe424@gmail.com">Have a project in mind? <span aria-hidden="true">↗</span></a></div><a class="email-link" href="mailto:thomasstolpe424@gmail.com">thomasstolpe424@gmail.com</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> DEESC Prototyping</span><span>Designed & built by Thomas Stolpe</span><a href="https://github.com/tstolpe29" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></footer><script src="script.js?v=20261031"></script></body></html>
