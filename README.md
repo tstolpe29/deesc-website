@@ -28,6 +28,10 @@ The gallery supports keyboard navigation with Left/Right and Escape. The mobile 
 
 The drone and HITL project pages now include hardware architecture, signal paths, software flow and verification examples. The HITL page opens with the supplied 3D PCB render and uses the same image first in its gallery. `case-study.css` styles the added sections. The routing explorer is an illustration and does not connect to hardware.
 
+The HITL page leads with alternating numbered bench-photo, AI motor-tuning and Ethernet sections. Its network evidence includes original Wireshark screenshots, a small packet-capture excerpt, a nine-profile CSV and a JSON summary. The final diagnostic matrix passed application checks; the page also records TCP connection resets/retries and distinguishes CPU/SPI clock speeds from Ethernet link rate. The capture excerpt includes board-related ARP/ICMP traffic from outside the final matrix; frame numbers differ from the original screenshots.
+
+The AI-assisted motor section cites the completed 89-job tuning session and its lookup-table check, current trips and speed-ripple limitations. Its JSON summary describes the division between trial planning, Python checks and local ESC commutation. No physical hardware is controlled by this website.
+
 The supplied PDB, FMU, motor-drive and encoder schematics were used only to explain the system. They are not included in this package. The new public document, `assets/docs/HITL-schematic-sheets.pdf`, contains only the six HITL circuit sheets. Existing documents for unrelated portfolio projects are retained.
 
 When deploying, replace the site contents with this package while preserving any hosting configuration outside it. If applying an overlay to an existing checkout, also remove `assets/projects/modular-drone-platform/04.png`: this old circuit-diagram image has been removed from the updated site. Keep `CNAME` unchanged. This package does not itself update the live website.

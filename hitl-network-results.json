@@ -1,0 +1,121 @@
+{
+  "test": "Standalone HITL Ethernet diagnostics",
+  "date": "2026-11-01 Pacific Time",
+  "scope": "Temporary diagnostic firmware; no PDB or ESC attached.",
+  "profiles": [
+    {
+      "cpu_mhz": 64,
+      "spi_mhz": 8,
+      "tcp_passed": 126,
+      "tcp_total": 126,
+      "udp_passed": 882,
+      "udp_total": 882,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 194.75205961239854
+    },
+    {
+      "cpu_mhz": 200,
+      "spi_mhz": 8,
+      "tcp_passed": 130,
+      "tcp_total": 130,
+      "udp_passed": 1346,
+      "udp_total": 1346,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 374.04422386219454
+    },
+    {
+      "cpu_mhz": 300,
+      "spi_mhz": 8,
+      "tcp_passed": 145,
+      "tcp_total": 145,
+      "udp_passed": 1285,
+      "udp_total": 1285,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 408.0707467151672
+    },
+    {
+      "cpu_mhz": 400,
+      "spi_mhz": 8,
+      "tcp_passed": 140,
+      "tcp_total": 140,
+      "udp_passed": 1319,
+      "udp_total": 1319,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 419.83729582796786
+    },
+    {
+      "cpu_mhz": 480,
+      "spi_mhz": 8,
+      "tcp_passed": 144,
+      "tcp_total": 144,
+      "udp_passed": 1308,
+      "udp_total": 1308,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 425.8478676790763
+    },
+    {
+      "cpu_mhz": 64,
+      "spi_mhz": 1,
+      "tcp_passed": 120,
+      "tcp_total": 120,
+      "udp_passed": 453,
+      "udp_total": 453,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 56.176532074881386
+    },
+    {
+      "cpu_mhz": 480,
+      "spi_mhz": 1,
+      "tcp_passed": 120,
+      "tcp_total": 120,
+      "udp_passed": 504,
+      "udp_total": 504,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 58.24985069778368
+    },
+    {
+      "cpu_mhz": 480,
+      "spi_mhz": 16,
+      "tcp_passed": 164,
+      "tcp_total": 164,
+      "udp_passed": 1585,
+      "udp_total": 1585,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 702.4788172448729
+    },
+    {
+      "cpu_mhz": 480,
+      "spi_mhz": 32,
+      "tcp_passed": 2308,
+      "tcp_total": 2308,
+      "udp_passed": 42199,
+      "udp_total": 42199,
+      "stream_payload_bytes": 1048576,
+      "stream_kib_per_s": 709.5579675599816
+    }
+  ],
+  "soak": {
+    "cpu_mhz": 480,
+    "spi_mhz": 32,
+    "configured_seconds": 300.0,
+    "actual_seconds": 300.06406740000057,
+    "tcp_passed": 2193,
+    "tcp_total": 2193,
+    "udp_passed": 40545,
+    "udp_total": 40545
+  },
+  "final_matrix_address_checks": {
+    "arp_requests": 18,
+    "arp_replies": 18,
+    "icmp_echo_pairs": 36
+  },
+  "tcp_echo_bytes": 1048576,
+  "tcp_echo_seconds": 1.443,
+  "udp_payload_lengths_tested": "0 through 1448 application bytes",
+  "application_crc_test": "One deliberately bad application CRC rejected; following valid echo passed.",
+  "connection_caveat": "Capture review found an initial TCP reset from the board followed by another SYN and a completed handshake in 600 of 3,397 normal TCP cases. The repeated connection setup remains a reliability and timing limitation. Their median first SYN to successful handshake time was 509.9 ms.",
+  "rate_definition": "Counts include functional and soak checks. Each KiB/s value is one complete 1 MiB echo, including connection, host Python checks and logging, TCP window and acknowledgment timing, and half close; bytes are counted once. It is not an isolated CPU benchmark or Ethernet line rate.",
+  "clock_scope": "CPU clock, SPI clock and Ethernet link rate are separate quantities. Independent SWD register decoding verified clock settings; W5500 status reported a 100 Mbps link in all nine profiles. Host timed DWT intervals are additional checks, not calibrated frequency measurements.",
+  "capture_excerpt": "Selected TCP stream, UDP payload/CRC exchanges, and board-related ARP/ICMP packets across the full diagnostic session. This excerpt includes traffic outside the final nine-profile matrix. Excerpt frame numbers differ from original screenshot frame numbers.",
+  "full_capture_sha256": "e8d4d292f59cdb5a65306b3da5cbadb4be97883d4bb769857c9cbabddf7d22aa"
+}

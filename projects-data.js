@@ -971,6 +971,14 @@ window.DEESC_PROJECTS = [
       {
         "src": "photo-thrust-rig.webp",
         "caption": "Load-cell fixture and measurement electronics."
+      },
+      {
+        "src": "photo-hitl-wireshark-tcp.png",
+        "caption": "Wireshark: verified 1 MiB TCP echo"
+      },
+      {
+        "src": "photo-hitl-wireshark-udp.png",
+        "caption": "Wireshark: 1,448-byte UDP payload check"
       }
     ],
     "documents": [
@@ -1059,7 +1067,7 @@ window.DEESC_PROJECTS = [
           "Compare test settings and measurements across repeatable bench runs."
         ]
       ],
-      "ownership": "I designed the test hardware and integrated the bench workflow. The Python console was generated with AI assistance; my software work focuses on understanding the command / telemetry path and checking behavior against the hardware and independent instruments."
+      "ownership": "I designed the test hardware and integrated the bench workflow. The Python console and tuning tools were built with AI assistance. I review their behavior through instrument comparisons, captured traffic and repeatable bench trials."
     },
     "validationTitle": "Check the behavior against something independent.",
     "validationIntro": "A readable GUI value is only one observation. I use instrument comparisons, packet captures and hardware response to check different parts of the test chain.",
@@ -1073,8 +1081,8 @@ window.DEESC_PROJECTS = [
       {
         "label": "NETWORK CAPTURE",
         "title": "Standalone Ethernet",
-        "body": "Use Wireshark to inspect ARP, ICMP echo, TCP commands and UDP traffic. These checks can run with HITL by itself, without a PDB or ESC attached.",
-        "scope": "Network operation, not motor behavior"
+        "body": "Nine completed standalone CPU/SPI profiles passed application checks. Wireshark and capture audits verified payload delivery and exposed repeated TCP connection setup in a subset of cases.",
+        "scope": "Standalone diagnostic firmware; see measured network results above"
       },
       {
         "label": "END-TO-END CHECK",
@@ -1084,21 +1092,177 @@ window.DEESC_PROJECTS = [
       }
     ],
     "documentNote": "Working engineering draft covering power, the controller, signal routing, memory and external interfaces. These are the six circuit sheets from the supplied HITL design.",
-    "boardShowcase": {
-      "title": "From the stack-up to the connector.",
-      "images": [
+    "heroFit": "contain",
+    "heroAlt": "HITL test platform 3D PCB render with the STM32 controller, Ethernet, microSD and interface connectors",
+    "stories": [
+      {
+        "id": "bench-story",
+        "number": "01",
+        "eyebrow": "FROM DESIGN TO THE BENCH",
+        "title": "Real hardware. Accessible signals.",
+        "image": "photo-hitl-bringup.webp",
+        "alt": "Assembled HITL board with Ethernet and bring-up wiring",
+        "caption": "HITL / board bring-up",
+        "body": "HITL means Human in the Loop in this project. The custom board gives me access to the drone’s electrical interfaces, so I can select a signal source, run a controlled test and inspect the response.",
+        "points": [
+          "STM32H743 controller, Ethernet and signal selectors on a six-layer PCB",
+          "DShot motor commands, PDB telemetry, GPS, radio and external magnetometer interfaces",
+          "Independent instruments and saved measurements to check what the console reports"
+        ],
+        "link": "#signal-routing",
+        "linkLabel": "Explore the signal paths"
+      },
+      {
+        "id": "motor-tuning",
+        "number": "02",
+        "eyebrow": "AI IN THE TUNING WORKFLOW",
+        "title": "Measure. Adjust. Run it again.",
+        "image": "photo-drone-bench.webp",
+        "alt": "Custom motor-drive electronics and the motor thrust-test fixture",
+        "caption": "Motor bench / open-loop development",
+        "body": "The Python console connects an AI planner to bounded motor trials. It can sweep commanded speed at a fixed duty, read current and synchronism, and propose a duty-to-RPM lookup table. The same bench supports manual tuning and DMM comparisons.",
+        "points": [
+          "AI chooses trials; Python checks requests and records the results",
+          "HITL carries commands and telemetry; the ESC generates the motor waveforms",
+          "The operator can stop the run; current, stale-data and energy checks bound the jobs"
+        ],
+        "note": "In true open-loop mode, the ESC advances the commanded electrical angle without continuously correcting it from rotor position. Measurements guide the next trial and detect faults; the AI is not the real-time commutation controller.",
+        "result": "Recorded session: 89 jobs over 18.9 minutes, tuning 3–20% duty. The final up/down lookup-table check passed. Three current trips and some speed-ripple readings above target remain in the record.",
+        "link": "hitl-motor-tuning-results.json",
+        "linkLabel": "View the tuning-session summary"
+      },
+      {
+        "id": "network-results",
+        "number": "03",
+        "eyebrow": "WIRESHARK / MEASURED RESULTS",
+        "title": "Follow the packets. Check the payload.",
+        "image": "photo-hitl-wireshark-tcp.png",
+        "alt": "Wireshark capture of the successful 1 MiB TCP echo at 480 MHz CPU and 32 MHz SPI",
+        "caption": "TCP echo / original Wireshark capture",
+        "fit": "contain",
+        "body": "A standalone Ethernet test exercised ARP, ICMP, TCP and UDP across nine CPU/SPI profiles. The board was tested by itself with diagnostic firmware, without a PDB or ESC connected.",
+        "points": [
+          "64–480 MHz CPU clock; SPI profiles from 1–32 MHz",
+          "1 MiB TCP echo reassembled and matched in both directions",
+          "UDP payload sweep from 0–1,448 application bytes, plus a deliberate bad-CRC test"
+        ],
+        "link": "hitl-network-excerpt.pcapng",
+        "linkLabel": "Download the Wireshark excerpt"
+      }
+    ],
+    "networkResults": {
+      "stats": [
+        [
+          "9 / 9",
+          "completed profiles passed application checks"
+        ],
+        [
+          "2,193 / 2,193",
+          "TCP cases passed in the five-minute soak"
+        ],
+        [
+          "40,545 / 40,545",
+          "UDP echoes passed in the same soak"
+        ]
+      ],
+      "rows": [
         {
-          "src": "photo-hitl-cad.webp",
-          "caption": "3D assembly view: controller, signal switches, memory and external connectors."
+          "cpu_mhz": 64,
+          "spi_mhz": 8,
+          "tcp_passed": 126,
+          "tcp_total": 126,
+          "udp_passed": 882,
+          "udp_total": 882,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 194.75205961239854
         },
         {
-          "src": "photo-hitl-layout.webp",
-          "caption": "90 × 65 mm routing view and six-layer stack: signal / ground / signal / power / ground / signal."
+          "cpu_mhz": 200,
+          "spi_mhz": 8,
+          "tcp_passed": 130,
+          "tcp_total": 130,
+          "udp_passed": 1346,
+          "udp_total": 1346,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 374.04422386219454
+        },
+        {
+          "cpu_mhz": 300,
+          "spi_mhz": 8,
+          "tcp_passed": 145,
+          "tcp_total": 145,
+          "udp_passed": 1285,
+          "udp_total": 1285,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 408.0707467151672
+        },
+        {
+          "cpu_mhz": 400,
+          "spi_mhz": 8,
+          "tcp_passed": 140,
+          "tcp_total": 140,
+          "udp_passed": 1319,
+          "udp_total": 1319,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 419.83729582796786
+        },
+        {
+          "cpu_mhz": 480,
+          "spi_mhz": 8,
+          "tcp_passed": 144,
+          "tcp_total": 144,
+          "udp_passed": 1308,
+          "udp_total": 1308,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 425.8478676790763
+        },
+        {
+          "cpu_mhz": 64,
+          "spi_mhz": 1,
+          "tcp_passed": 120,
+          "tcp_total": 120,
+          "udp_passed": 453,
+          "udp_total": 453,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 56.176532074881386
+        },
+        {
+          "cpu_mhz": 480,
+          "spi_mhz": 1,
+          "tcp_passed": 120,
+          "tcp_total": 120,
+          "udp_passed": 504,
+          "udp_total": 504,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 58.24985069778368
+        },
+        {
+          "cpu_mhz": 480,
+          "spi_mhz": 16,
+          "tcp_passed": 164,
+          "tcp_total": 164,
+          "udp_passed": 1585,
+          "udp_total": 1585,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 702.4788172448729
+        },
+        {
+          "cpu_mhz": 480,
+          "spi_mhz": 32,
+          "tcp_passed": 2308,
+          "tcp_total": 2308,
+          "udp_passed": 42199,
+          "udp_total": 42199,
+          "stream_payload_bytes": 1048576,
+          "stream_kib_per_s": 709.5579675599816
         }
-      ]
-    },
-    "heroFit": "contain",
-    "heroAlt": "HITL test platform 3D PCB render with the STM32 controller, Ethernet, microSD and interface connectors"
+      ],
+      "finding": "The selected 1 MiB TCP echo completed in 1.443 s at 480 MHz CPU / 32 MHz SPI: 709.6 KiB/s of verified payload, counted once. This includes host checking, logging and connection timing; it is not Ethernet line rate. The W5500 reported a 100 Mbps link.",
+      "caveat": "A real limitation: 600 of 3,397 normal TCP cases began with a TCP reset (RST) from the board before a repeated SYN completed the connection. Median time from the first SYN to a successful handshake in those cases was 509.9 ms. Application checks passed after retry, but the transient socket-status cause remains unresolved.",
+      "image": "photo-hitl-wireshark-udp.png",
+      "imageCaption": "UDP request and reply with 1,448 application bytes. The audit checked sequence, length, payload hashes and application CRC.",
+      "excerptNote": "The download contains the selected TCP stream, UDP payload and CRC exchanges, and board-related ARP/ICMP traffic across the diagnostic session. It includes traffic outside the final matrix. Packet numbers are renumbered; screenshots retain the original capture numbers."
+    }
   },
   {
     "id": "esp32-fpga-development-board",

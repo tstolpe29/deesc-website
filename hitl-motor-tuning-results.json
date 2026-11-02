@@ -1,0 +1,15 @@
+{
+  "session": "2026-10-17 open-loop autotune",
+  "planner": "AI planner through the local Python bench API",
+  "jobs": 89,
+  "duration_minutes": 18.9,
+  "duty_range_percent": [
+    3,
+    20
+  ],
+  "lookup_table_step_check": "Passed upward and downward steps across the session range",
+  "current_trips": 3,
+  "limits": "Some recorded speed-ripple readings exceeded the 3% objective. The session is bench tuning evidence, not flight qualification or proof that every target was met.",
+  "method": "Sweep commanded speed at fixed duty, inspect current and synchronism, choose a duty-to-speed lookup table, then verify transitions.",
+  "control_architecture": "AI selects and evaluates trials; the ESC generates motor waveforms locally. In the true open-loop mode the commanded electrical angle is not continuously corrected by rotor feedback."
+}
