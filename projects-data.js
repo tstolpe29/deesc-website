@@ -290,23 +290,23 @@ window.DEESC_PROJECTS = [
     "number": "01",
     "category": "Selected Work",
     "title": "Modular Drone Platform",
-    "subtitle": "A custom drone electronics system, from flight control and power distribution to motor drives and communications.",
+    "subtitle": "Custom flight control, power distribution and motor drives, developed together with a dedicated bench-test platform.",
     "hero": "assy img 1.jpeg",
     "tags": [
-      "STM32H7",
-      "4-in-1 ESC",
-      "RF",
-      "Power Distribution"
+      "STM32H743",
+      "4S multirotor",
+      "Custom motor drives",
+      "Bench integration"
     ],
-    "status": "Active development · bench testing",
-    "overview": "I’m developing a modular 4S multirotor platform around my own electronics. The flight controller, power-distribution board, navigation board, radio hardware and motor-control architecture are designed to work together. Motors, propellers and the video system are off-the-shelf components.",
+    "status": "Custom hardware built · integration and motor-control development",
+    "overview": "I am developing a modular 4S multirotor around custom electronics: an STM32H743 flight controller, a power-distribution board, motor-drive hardware, and navigation and radio interfaces. Motors, propellers and the video system are off-the-shelf components. The companion HITL board gives me a computer-connected way to work through integration on the bench.",
     "engineering": [
-      "Flight control — an STM32H743 board brings together motion and pressure sensors, storage, CAN and interfaces to the rest of the aircraft.",
-      "Power and propulsion — custom power distribution monitors battery voltage and current. Modular ESC hardware separates motor-control logic from the high-current switching stage.",
-      "Navigation and radio — dedicated GNSS, magnetometer and RF boards support the wider system architecture.",
-      "Integration and testing — frame iterations, board bring-up and a motor thrust fixture support development before flight validation."
+      "Flight sensing: the FMU Lite combines an STM32H743VIT6 with a BMI088 inertial sensor, MS5611 barometer and MMC5983MA magnetometer.",
+      "Power visibility: the PDB measures battery voltage and high-side current, regulates 12 V and 5 V rails, and exposes a UART telemetry link.",
+      "Motor development: the supplied single-motor ESC revision combines an STM32G071, three-phase gate driver, MOSFET bridge and current feedback.",
+      "System integration: DShot, UART and I²C signal paths can be brought through HITL for controlled bench testing."
     ],
-    "focus": "The central challenge is making separate boards behave as one system: clean power, reliable interfaces, useful sensor data and packaging that can be assembled, tested and revised.",
+    "focus": "My work spans schematic capture, PCB layout, assembly, bring-up and system integration. The engineering challenge is the interaction between boards: power quality, signal ownership, measurement scaling and connector-level compatibility.",
     "gallery": [
       {
         "src": "photo-drone-hitl.webp",
@@ -334,11 +334,6 @@ window.DEESC_PROJECTS = [
         "src": "assets/projects/modular-drone-platform/03.jpeg",
         "caption": "Electronics integration inside the airframe",
         "original": "assy img 2.jpeg"
-      },
-      {
-        "src": "assets/projects/modular-drone-platform/04.png",
-        "caption": "Protected auxiliary-output concept diagram",
-        "original": "detonator.png"
       },
       {
         "src": "assets/projects/modular-drone-platform/05.png",
@@ -400,7 +395,7 @@ window.DEESC_PROJECTS = [
     "documents": [],
     "prev": "dmm-buffer",
     "next": "finch-voice-assistant",
-    "documentNote": "Detailed schematics for the flight controller, power-distribution, GNSS, RF and 4-in-1 ESC electronics can be provided to qualified reviewers or prospective collaborators upon signing an NDA.",
+    "documentNote": "The flight-control, power-distribution, motor-drive and encoder schematics are kept private. The companion HITL page includes its test-board schematic sheets.",
     "group": "selected",
     "facts": [
       [
@@ -418,23 +413,135 @@ window.DEESC_PROJECTS = [
     ],
     "diagram": [
       [
-        "Flight controller",
-        "Sensing + control"
+        "FMU Lite",
+        "Sensing + motor commands"
       ],
       [
         "Power distribution",
-        "Battery + measurement"
+        "Battery bus + regulated rails"
       ],
       [
-        "Motor drives",
-        "Logic + power stages"
+        "Motor drive + encoder",
+        "Switching + rotor feedback"
       ],
       [
-        "Navigation / RF",
-        "Position + communications"
+        "HITL test bench",
+        "Selected signals + measurements"
       ]
     ],
-    "outcome": "Custom assemblies and bench-test hardware are built. Electronics, firmware and motor-control testing are ongoing; flight performance is not yet claimed."
+    "outcome": "Custom assemblies and bench fixtures are built. Firmware, motor-control behavior and broader system integration remain in development; flight validation is a later stage.",
+    "systemCaption": "Functional roles in the platform. Power and data follow separate paths; these blocks are not a series power connection.",
+    "hardwareTitle": "Each board has a defined job.",
+    "hardwareIntro": "Separating flight sensing, power conversion and motor switching makes the interfaces explicit and allows individual assemblies to be brought up and revised.",
+    "hardware": [
+      {
+        "index": "01",
+        "title": "FMU Lite",
+        "role": "Flight control & sensing",
+        "image": "assets/projects/modular-drone-platform/07.jpeg",
+        "alt": "Assembled FMU Lite flight-control board",
+        "body": "The STM32H743VIT6 connects to motion, pressure and magnetic-field sensors over SPI. Dedicated 3.3 V rails serve the MCU and other electronics, while FRAM provides nonvolatile storage.",
+        "details": [
+          "BMI088 accelerometer / gyroscope, MS5611 barometer, MMC5983MA magnetometer",
+          "Four DShot outputs plus UART links for power telemetry, navigation and radio",
+          "External SPI and I²C connections for integration"
+        ]
+      },
+      {
+        "index": "02",
+        "title": "Power-distribution board",
+        "role": "Energy & battery telemetry",
+        "image": "assets/projects/modular-drone-platform/11.jpeg",
+        "alt": "Assembled custom power-distribution board",
+        "body": "The PDB distributes the battery bus and generates 12 V and 5 V rails. An INA240 current-sense amplifier and battery-voltage divider feed an STM32G071, which provides the measurement and UART interface.",
+        "details": [
+          "High-side shunt measures battery-bus current",
+          "Voltage divider scales battery voltage for the ADC",
+          "UART and GPIO connect the power board to the wider control system"
+        ]
+      },
+      {
+        "index": "03",
+        "title": "Motor-drive hardware",
+        "role": "Three-phase switching & feedback",
+        "image": "assets/projects/modular-drone-platform/14.jpeg",
+        "alt": "Earlier motor-drive board during single-motor bring-up",
+        "body": "The project includes earlier 4-in-1 assemblies and a later single-motor revision. The reviewed single-motor design uses an STM32G071 and DRV8300 to control six MOSFETs arranged as three half bridges.",
+        "details": [
+          "DShot command input, telemetry and a separate encoder connection",
+          "Three shunt-sense channels with INA181 amplifiers",
+          "A buffered midpoint reference supports bidirectional current measurement"
+        ],
+        "caption": "Photo: earlier 4-in-1 assembly during single-motor bring-up."
+      },
+      {
+        "index": "04",
+        "title": "Rotor-position encoder",
+        "role": "Mechanical position becomes feedback",
+        "body": "A separate MT6701 magnetic encoder board exposes a rotor-position signal to the motor controller. Its connector carries 3.3 V, ground and the encoder output; additional pads provide access during development.",
+        "details": [
+          "A magnet and sensor form a contactless position interface",
+          "Alignment and the magnet-to-sensor gap are part of mechanical integration",
+          "The single-motor ESC provides a matching rotor-encoder connection"
+        ]
+      }
+    ],
+    "paths": [
+      {
+        "label": "Power path",
+        "nodes": [
+          "4S battery",
+          "PDB",
+          "Battery bus + 12 V / 5 V",
+          "Motor drive + flight electronics"
+        ]
+      },
+      {
+        "label": "Command path",
+        "nodes": [
+          "FMU or HITL",
+          "Selected DShot source",
+          "ESC controller",
+          "Three-phase bridge → motor"
+        ]
+      },
+      {
+        "label": "Measurement path",
+        "nodes": [
+          "Battery / motor",
+          "PDB & ESC sensing",
+          "UART / telemetry",
+          "HITL → computer"
+        ]
+      }
+    ],
+    "pathsNote": "The external MT6701 encoder feeds the ESC. The FMU also carries its own inertial, pressure and magnetic sensors; those are separate from the external navigation paths routed through HITL.",
+    "validationTitle": "Bring up the parts. Then test their interaction.",
+    "validationIntro": "Development moves from individual boards to the connected motor bench. The test setup makes it possible to compare commanded behavior with electrical measurements and physical response.",
+    "validation": [
+      {
+        "label": "POWER",
+        "title": "Check the measurements",
+        "body": "Compare PDB voltage and current telemetry with a DMM, one measurement at a time. This checks the sensing, scaling and reporting path together.",
+        "scope": "Battery measurement and telemetry"
+      },
+      {
+        "label": "PROPULSION",
+        "title": "Exercise one motor path",
+        "body": "Use the motor fixture to work through command input, phase-current acquisition and rotor-position feedback before combining more channels.",
+        "scope": "Motor-control development"
+      },
+      {
+        "label": "INTEGRATION",
+        "title": "Bring the boards together",
+        "body": "Use HITL to select command sources and observe the connected hardware from the computer. Retain measurements and test settings for comparison between runs.",
+        "scope": "System integration on the bench"
+      }
+    ],
+    "documentCta": {
+      "href": "project.html?id=hitl-test-platform#design-documents",
+      "label": "View the HITL design"
+    }
   },
   {
     "id": "finch-voice-assistant",
@@ -790,57 +897,61 @@ window.DEESC_PROJECTS = [
     "category": "Selected Work",
     "group": "selected",
     "title": "HITL Test Platform",
-    "subtitle": "A custom control and measurement board that puts drone electronics on a repeatable, computer-connected test bench.",
-    "status": "Working bench platform · ongoing development",
-    "heroImage": "photo-hitl-bench.webp",
+    "subtitle": "A custom interface between the computer and drone electronics: choose the signal source, run a controlled test, and capture the response.",
+    "status": "Working bench hardware · test and emulation firmware in development",
+    "heroImage": "photo-hitl-cad.webp",
     "tags": [
       "Test engineering",
       "STM32H743",
       "Ethernet",
       "Custom PCB"
     ],
-    "overview": "HITL means Human in the Loop here. I designed the board to make drone development easier to observe and control from a computer: select signal paths, send test commands and collect measurements while keeping the operator involved.",
-    "focus": "It connects the hardware being developed to the tools needed to understand it. Instead of checking each board in isolation, the bench brings control, measurement and recorded results into the same workflow.",
+    "overview": "HITL means Human in the Loop in this project. I designed it to give the operator access to the drone’s electrical interfaces while developing the flight, power and motor hardware. It combines a dedicated STM32H743, Ethernet, signal multiplexers and storage on one six-layer board.",
+    "focus": "The key idea is controlled signal ownership. Selected paths can carry the aircraft’s original signal or a signal generated by HITL firmware. That makes individual interfaces easier to exercise, observe and troubleshoot during integration.",
     "engineering": [
-      "Custom test hardware — a six-layer, 90 × 65 mm PCB brings an STM32H743, W5500 Ethernet, signal switching and accessible peripheral connections together.",
-      "Computer-connected control — an Ethernet console selects signal routes and sends commands for bench development, including DShot motor-control signals.",
-      "Measurement and logging — the test workflow supports rotor-angle/RPM observation, power-board voltage and current acquisition, and CSV exports for comparing runs.",
-      "A physical test system — the board works alongside custom ESC and power hardware, a motor fixture and thrust-measurement electronics."
+      "Six-layer, 90 × 65 mm hardware with STM32H743ZIT6 control, W5500 Ethernet and connector access around the board perimeter.",
+      "Selectable paths for four DShot channels, PDB UART/GPIO, radio UART, GPS UART and the external magnetometer I²C connection.",
+      "Python console sends TCP commands and receives UDP telemetry; the W5500 connects the Ethernet link to the MCU over SPI.",
+      "MicroSD and SPI FRAM provide storage hardware; CAN, SPI, I²C, UART and spare GPIO extend the bench interfaces."
     ],
     "facts": [
       [
         "PCB",
-        "6 layers"
+        "6 layers · 90 × 65 mm"
       ],
       [
-        "Board size",
-        "90 × 65 mm"
+        "Controller",
+        "STM32H743ZIT6"
       ],
       [
-        "Connection",
-        "Ethernet"
+        "PC connection",
+        "W5500 Ethernet / SPI"
       ]
     ],
     "diagram": [
       [
-        "Desktop console",
-        "Commands + observations"
+        "Set the test",
+        "Operator + Python console"
       ],
       [
-        "HITL board",
-        "Signal routing + acquisition"
+        "Send commands",
+        "TCP over Ethernet"
       ],
       [
-        "Hardware under test",
-        "Flight / power / motor"
+        "Exercise hardware",
+        "MCU + selected signal paths"
       ],
       [
-        "Test records",
-        "Measurements + CSV"
+        "Review the response",
+        "UDP telemetry + run records"
       ]
     ],
-    "outcome": "The board has been brought up and used in the motor-test workflow. Signal-emulation profiles and broader integration continue to evolve; measurement scaling and test conditions matter when comparing results.",
+    "outcome": "The board has been brought up, Ethernet has been exercised independently, and the platform is used in the motor-test workflow. Signal-emulation profiles and wider integration are evolving. Powered pass-through requires a valid multiplexer supply; hardware watchdog and power-loss behavior are future revision work.",
     "gallery": [
+      {
+        "src": "photo-hitl-cad.webp",
+        "caption": "HITL 3D assembly render showing the controller and connector arrangement."
+      },
       {
         "src": "photo-hitl-bench.webp",
         "caption": "HITL board powered and connected during bench testing."
@@ -850,12 +961,8 @@ window.DEESC_PROJECTS = [
         "caption": "Board bring-up with Ethernet and a debug connection."
       },
       {
-        "src": "photo-hitl-cad.webp",
-        "caption": "HITL component placement and connector arrangement in Altium."
-      },
-      {
         "src": "photo-hitl-layout.webp",
-        "caption": "Six-layer board layout with the 90 × 65 mm outline."
+        "caption": "HITL six-layer routing and the dimensioned 90 × 65 mm outline."
       },
       {
         "src": "photo-drone-bench.webp",
@@ -866,7 +973,132 @@ window.DEESC_PROJECTS = [
         "caption": "Load-cell fixture and measurement electronics."
       }
     ],
-    "documents": []
+    "documents": [
+      {
+        "href": "assets/docs/HITL-schematic-sheets.pdf",
+        "label": "HITL schematic sheets · 6 pages"
+      }
+    ],
+    "systemCaption": "The PC network link and the routed board-level signals do different jobs: Ethernet carries commands and telemetry, while the multiplexers select electrical signal paths.",
+    "hardwareTitle": "Built to connect the bench.",
+    "hardwareIntro": "The board brings control, communication and storage together, with direct access to the interfaces under test.",
+    "hardware": [
+      {
+        "index": "01",
+        "title": "Controller & power",
+        "role": "Local execution",
+        "body": "An STM32H743ZIT6 handles test commands, peripheral timing and acquisition. The power circuit accepts a 5 V input and uses an AP64502 synchronous buck to generate 3.3 V. USB-C and SWD support bring-up and development.",
+        "details": [
+          "External high-speed and low-speed clocks",
+          "Distributed MCU decoupling and reset / boot access",
+          "Separate connector for the 5 V supply"
+        ]
+      },
+      {
+        "index": "02",
+        "title": "Ethernet & field interfaces",
+        "role": "Computer to hardware",
+        "body": "A W5500 handles the Ethernet interface and communicates with the STM32 over SPI. A TCAN332 CAN transceiver and dedicated UART, I²C and SPI connectors give the bench several ways to reach external hardware.",
+        "details": [
+          "RJ45 interface with link / activity indication",
+          "SPI connection between W5500 and STM32",
+          "CAN termination uses two 60 Ω resistors and a midpoint capacitor"
+        ]
+      },
+      {
+        "index": "03",
+        "title": "Storage & physical layout",
+        "role": "Keep the test observable",
+        "body": "A microSD socket and FM25V05 SPI FRAM provide local storage hardware. The six-layer stack uses signal, ground, signal, power, ground and signal layers within the 90 × 65 mm outline.",
+        "details": [
+          "Connectors arranged around the PCB perimeter",
+          "Accessible programming and spare-GPIO headers",
+          "Dedicated paths for PDB and ESC communication"
+        ]
+      }
+    ],
+    "routeExplorer": true,
+    "software": {
+      "title": "One command path. One measurement path.",
+      "intro": "The Python console is the operator interface. Test execution and peripheral timing live on the board; the network joins the two.",
+      "paths": [
+        {
+          "label": "CONTROL · TCP",
+          "nodes": [
+            "GUI change",
+            "Python checks",
+            "TCP command",
+            "HITL action"
+          ]
+        },
+        {
+          "label": "TELEMETRY · UDP",
+          "nodes": [
+            "Board measurement",
+            "UDP packet",
+            "Validate + decode",
+            "Display / record"
+          ]
+        }
+      ],
+      "details": [
+        [
+          "TCP commands",
+          "A reliable, ordered path for requests and responses."
+        ],
+        [
+          "UDP telemetry",
+          "Live measurement packets without TCP’s automatic retransmission queue."
+        ],
+        [
+          "Packet checks",
+          "Check the sender, packet length and format before interpreting measurements."
+        ],
+        [
+          "Recorded results",
+          "Compare test settings and measurements across repeatable bench runs."
+        ]
+      ],
+      "ownership": "I designed the test hardware and integrated the bench workflow. The Python console was generated with AI assistance; my software work focuses on understanding the command / telemetry path and checking behavior against the hardware and independent instruments."
+    },
+    "validationTitle": "Check the behavior against something independent.",
+    "validationIntro": "A readable GUI value is only one observation. I use instrument comparisons, packet captures and hardware response to check different parts of the test chain.",
+    "validation": [
+      {
+        "label": "INSTRUMENT COMPARISON",
+        "title": "PDB voltage & current",
+        "body": "Compare PDB telemetry with a DMM connected to the bench, checking voltage and current separately. Agreement tests the sensor, conversion, communication and displayed value together.",
+        "scope": "Connected PDB measurement path"
+      },
+      {
+        "label": "NETWORK CAPTURE",
+        "title": "Standalone Ethernet",
+        "body": "Use Wireshark to inspect ARP, ICMP echo, TCP commands and UDP traffic. These checks can run with HITL by itself, without a PDB or ESC attached.",
+        "scope": "Network operation, not motor behavior"
+      },
+      {
+        "label": "END-TO-END CHECK",
+        "title": "Command versus response",
+        "body": "Change a console parameter and compare the intended command with the transmitted value and the observed hardware response. Keep the test conditions with the recorded result.",
+        "scope": "Console-to-hardware behavior"
+      }
+    ],
+    "documentNote": "Working engineering draft covering power, the controller, signal routing, memory and external interfaces. These are the six circuit sheets from the supplied HITL design.",
+    "boardShowcase": {
+      "title": "From the stack-up to the connector.",
+      "images": [
+        {
+          "src": "photo-hitl-cad.webp",
+          "caption": "3D assembly view: controller, signal switches, memory and external connectors."
+        },
+        {
+          "src": "photo-hitl-layout.webp",
+          "caption": "90 × 65 mm routing view and six-layer stack: signal / ground / signal / power / ground / signal."
+        }
+      ]
+    },
+    "heroFit": "contain",
+    "heroAlt": "HITL test platform 3D PCB render with the STM32 controller, Ethernet, microSD and interface connectors"
   },
   {
     "id": "esp32-fpga-development-board",

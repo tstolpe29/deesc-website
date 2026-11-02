@@ -1,0 +1,70 @@
+/* Extended drone and HITL case studies. Existing portfolio styles stay shared. */
+.case-jump{display:flex;flex-wrap:wrap;gap:12px 27px;padding-block:20px;border-bottom:1px solid var(--line)}
+.case-jump a{font-size:12px;color:#c5d5e6;padding:5px 0;border-bottom:1px solid transparent}
+.case-jump a:hover{color:var(--blue-light);border-color:var(--blue)}
+.detail-section{padding-block:28px 68px}
+.detail-heading{max-width:790px;margin-bottom:32px}
+.detail-heading .eyebrow{margin-bottom:14px}
+.detail-heading h2{font-size:clamp(29px,3.1vw,43px);line-height:1.17;margin-bottom:20px}
+.detail-heading>p:last-child{font-size:16px;margin-bottom:0}
+.hardware-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.hardware-card{border:1px solid var(--line);background:#0f1925;min-width:0}
+.hardware-card figure{margin:0;border-bottom:1px solid var(--line)}
+.hardware-card figure img{height:260px;width:100%;object-fit:cover}
+.hardware-card figcaption{font-size:11px;color:#a5b7cb;padding:12px 24px}
+.hardware-copy{padding:28px}
+.hardware-role{display:flex;gap:12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:15px}
+.hardware-role span{color:#718ba5}
+.hardware-copy h3{font-size:26px;line-height:1.2;letter-spacing:-.03em;margin-bottom:16px}
+.hardware-copy>p:not(.hardware-role){font-size:14px;color:#bbc9d9;margin-bottom:22px}
+.hardware-copy details{border-top:1px solid #2c3e52;padding-top:15px}
+.hardware-copy summary{font-size:12px;font-weight:600;color:#8fd2ff;cursor:pointer;padding-block:4px}
+.hardware-copy ul{padding-left:19px;font-size:13px;color:#acbed2;margin-bottom:0}
+.hardware-copy li{margin-bottom:8px}
+.connection-paths{border-top:1px solid var(--line);margin-top:34px}
+.connection-path{display:grid;grid-template-columns:155px minmax(0,1fr);align-items:center;gap:20px;padding:23px 0;border-bottom:1px solid var(--line)}
+.connection-path>p{font-size:10px;font-weight:700;color:var(--blue-light);text-transform:uppercase;letter-spacing:.11em;margin:0}
+.connection-path ol{display:flex;align-items:center;list-style:none;gap:18px;padding:0;margin:0}
+.connection-path li{flex:1;min-width:0;font-size:13px;color:#c9d9e9;position:relative;padding-right:18px;line-height:1.5}
+.connection-path li:not(:last-child):after{content:'→';position:absolute;right:-6px;color:#5b9bc9}
+.section-note{font-size:12px;max-width:950px;line-height:1.7;margin:20px 0 0;color:#91a7be}
+.routing-section{padding-block:66px;background:#101c2a;border-block:1px solid #263c52;margin-bottom:58px}
+.route-controls{display:flex;align-items:end;justify-content:space-between;gap:25px;margin:30px 0}
+.route-controls label{display:grid;gap:9px;font-size:11px;color:#b5c6d9;min-width:0;flex:1;max-width:370px}
+.route-controls select{color:var(--text);background:#09121d;border:1px solid #46617d;border-radius:0;padding:13px 34px 13px 14px;font:inherit;font-size:14px;width:100%}
+.route-mode{display:flex;border:1px solid #405972;padding:4px;gap:4px}
+.route-mode button{background:transparent;border:1px solid transparent;cursor:pointer;padding:11px 17px;font-size:12px;color:#aebfd2}
+.route-mode button[aria-pressed=true]{background:#63bfff;color:#071421;border-color:#63bfff;font-weight:700}
+.route-mode button:hover{border-color:#86b6dd}
+.route-diagram{display:grid;grid-template-columns:1fr 1fr 1fr;gap:70px;align-items:center;padding:36px;background:#09131f;border:1px solid #304960;--route-color:#76c8ff}
+.route-sources{display:grid;gap:16px}
+.route-source,.route-switch,.route-destination{padding:21px 18px;position:relative;min-width:0;border:1px solid #344c62;background:#102034}
+.route-source{opacity:.45;transition:opacity .18s,border-color .18s}
+.route-source.active{opacity:1;border-color:var(--route-color);background:#12304a}
+.route-source.active:after,.route-switch:after{content:'→';position:absolute;right:-52px;top:calc(50% - 16px);font-size:25px;color:var(--route-color)}
+.route-source span,.route-switch>span:first-child,.route-destination>span:first-child{display:block;font-size:9px;letter-spacing:.1em;color:#87a8c7;margin-bottom:9px}
+.route-diagram strong{display:block;font-size:16px;line-height:1.4;font-weight:500}
+.route-switch{border-color:var(--route-color)}
+.route-switch-state{display:block;color:var(--route-color);font-size:10px;line-height:1.5;margin-top:14px}
+.route-destination>span:last-child{display:block;font-size:11px;color:#a8bbcf;margin-top:10px}
+.route-explanation{padding:25px 0 0;min-height:125px;max-width:900px}
+.route-explanation h3{font-size:22px;line-height:1.3;margin-bottom:12px;letter-spacing:-.025em}
+.route-explanation p{font-size:14px;line-height:1.75;margin:0}
+.software-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:25px;margin:28px 0}
+.software-details dt{font-size:14px;color:#d6e5f3;font-weight:500;margin-bottom:9px}
+.software-details dd{font-size:13px;color:#a7bbd0;margin:0}
+.ownership-note{font-size:13px;border-left:2px solid #456a90;padding:5px 0 5px 22px;max-width:950px;margin:30px 0 0}
+.verification-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.verification-grid article{border-top:2px solid #4d89b7;padding-top:24px;display:flex;flex-direction:column}
+.verification-grid .eyebrow{font-size:9px;letter-spacing:.12em;margin-bottom:16px}
+.verification-grid h3{font-size:25px;line-height:1.2;letter-spacing:-.03em}
+.verification-grid article>p:not(.eyebrow){font-size:14px;line-height:1.8;margin-bottom:22px}
+.verification-grid article>span{font-size:11px;color:#8fd2ff;margin-top:auto;padding-top:14px;border-top:1px solid #253d54}
+.board-views{display:grid;grid-template-columns:1fr 1.15fr;gap:24px}
+.board-views figure{margin:0;min-width:0}
+.board-views a{display:block;border:1px solid var(--line);background:#182531}
+.board-views img{width:100%;height:340px;object-fit:contain}
+.board-views figcaption{font-size:12px;color:#a4b9cf;line-height:1.7;padding-top:16px}
+@media(max-width:1100px){.route-diagram{gap:40px;padding:24px}.route-source.active:after,.route-switch:after{right:-32px}.hardware-copy{padding:24px}.hardware-card figure img{height:220px}.software-details{grid-template-columns:1fr 1fr}.connection-path{grid-template-columns:120px minmax(0,1fr)}}
+@media(max-width:800px){.case-jump{gap:8px 21px}.detail-section{padding-block:20px 48px}.routing-section{padding-block:42px;margin-bottom:35px}.hardware-grid{gap:18px}.hardware-copy{padding:20px}.hardware-copy h3{font-size:23px}.route-controls{align-items:stretch;flex-direction:column;gap:18px}.route-controls label{max-width:none}.route-mode{align-self:start}.route-diagram{gap:26px;padding:20px}.route-source,.route-switch,.route-destination{padding:15px 12px}.route-source.active:after,.route-switch:after{right:-23px;font-size:19px;top:calc(50% - 12px)}.route-diagram strong{font-size:13px}.route-source span,.route-switch>span:first-child,.route-destination>span:first-child{font-size:8px}.connection-path{grid-template-columns:1fr;gap:15px}.verification-grid{grid-template-columns:1fr;gap:30px}.verification-grid h3{margin-bottom:14px}.board-views{grid-template-columns:1fr}.board-views img{height:auto;max-height:540px}}
+@media(max-width:560px){.hardware-grid{grid-template-columns:1fr}.hardware-card figure img{height:250px}.hardware-copy{padding:23px}.hardware-copy>p:not(.hardware-role){font-size:14px}.connection-path ol{display:grid;grid-template-columns:1fr 1fr;gap:17px 24px}.connection-path li{font-size:12px}.connection-path li:nth-child(2):after{content:'↴'}.route-diagram{grid-template-columns:1fr;gap:38px;padding:23px}.route-sources{grid-template-columns:1fr 1fr;gap:14px}.route-source.active:after{content:'↓';right:calc(50% - 5px);top:auto;bottom:-33px;font-size:23px}.route-switch:after{content:'↓';right:calc(50% - 5px);top:auto;bottom:-34px;font-size:23px}.route-diagram strong{font-size:15px}.route-source span,.route-switch>span:first-child,.route-destination>span:first-child{font-size:9px}.route-explanation{min-height:0}.software-details{gap:23px 18px}.software-details dt{font-size:13px}.software-details dd{font-size:12px}.route-mode{width:100%}.route-mode button{flex:1;font-size:11px;padding:11px 9px}.detail-heading h2{font-size:30px}.detail-heading>p:last-child{font-size:15px}}
