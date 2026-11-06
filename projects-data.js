@@ -299,7 +299,7 @@ window.DEESC_PROJECTS = [
       "Bench integration"
     ],
     "status": "Custom hardware built · integration and motor-control development",
-    "overview": "I am developing a modular 4S multirotor around custom electronics: an STM32H743 flight controller, a power-distribution board, motor-drive hardware, and navigation and radio interfaces. Motors, propellers and the video system are off-the-shelf components. The companion HITL board gives me a computer-connected way to work through integration on the bench.",
+    "overview": "I am developing a 4S, 5-inch quadcopter prototype around custom electronics: an STM32H743 flight controller, a power-distribution board, motor-drive hardware, and navigation and radio interfaces. Motors, propellers and the video system are off-the-shelf components. The companion HITL board gives me a computer-connected way to work through integration on the bench.",
     "engineering": [
       "Flight sensing: the FMU Lite combines an STM32H743VIT6 with a BMI088 inertial sensor, MS5611 barometer and MMC5983MA magnetometer.",
       "Power monitoring: the PDB measures battery voltage and high-side current, regulates 12 V and 5 V rails, and exposes a UART telemetry link.",
@@ -817,7 +817,7 @@ window.DEESC_PROJECTS = [
       },
       {
         "src": "assets/projects/modular-bldc-senior-project/03.png",
-        "caption": "Four-motor modular ESC test stand",
+        "caption": "Four-motor ESC test stand",
         "original": "Final motor test stand.png"
       },
       {
@@ -832,7 +832,7 @@ window.DEESC_PROJECTS = [
       },
       {
         "src": "assets/projects/modular-bldc-senior-project/06.jpeg",
-        "caption": "Stacked modular control hardware",
+        "caption": "Stacked motor-control hardware",
         "original": "PCB stack.jpeg"
       },
       {
