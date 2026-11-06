@@ -2,7 +2,7 @@ window.DEESC_PROJECTS = [
   {
     "id": "low-power-haptic-reminder",
     "number": "02",
-    "category": "Built for People",
+    "category": "Personal Devices",
     "title": "Haptic Reminder",
     "subtitle": "A pocket-sized rechargeable device that gives a gentle vibration reminder every ten minutes.",
     "hero": "IMG_2054.jpeg",
@@ -15,10 +15,10 @@ window.DEESC_PROJECTS = [
     "status": "Delivered client prototype",
     "overview": "A nonprofit wellness client needed a small, simple way to give regular tactile reminders. I built a roughly 1 × 2 inch device that combines the electronics, battery, vibration motor, controls and enclosure in one rechargeable package.",
     "engineering": [
-      "A quiet reminder — an STM32 microcontroller keeps time and briefly drives the vibration motor every ten minutes.",
-      "Power-conscious firmware — the controller sleeps between reminders to reduce energy use while the device is idle.",
-      "Rechargeable hardware — USB-C charging and a single-cell battery make it convenient to recharge.",
-      "Designed as one object — the board and 3D-printed enclosure were developed together around the battery, motor, charging port and controls."
+      "Reminder timing: an STM32 microcontroller keeps time and briefly drives the vibration motor every ten minutes.",
+      "Low-power firmware: the controller sleeps between reminders to reduce energy use while the device is idle.",
+      "Charging: USB-C charging and a single-cell battery make it convenient to recharge.",
+      "Mechanical integration: the board and 3D-printed enclosure were developed together around the battery, motor, charging port and controls."
     ],
     "focus": "The important tradeoff was between a noticeable vibration, a small enclosure and low standby power. The device was designed toward a week-plus battery-life target, rather than daily charging.",
     "gallery": [
@@ -302,7 +302,7 @@ window.DEESC_PROJECTS = [
     "overview": "I am developing a modular 4S multirotor around custom electronics: an STM32H743 flight controller, a power-distribution board, motor-drive hardware, and navigation and radio interfaces. Motors, propellers and the video system are off-the-shelf components. The companion HITL board gives me a computer-connected way to work through integration on the bench.",
     "engineering": [
       "Flight sensing: the FMU Lite combines an STM32H743VIT6 with a BMI088 inertial sensor, MS5611 barometer and MMC5983MA magnetometer.",
-      "Power visibility: the PDB measures battery voltage and high-side current, regulates 12 V and 5 V rails, and exposes a UART telemetry link.",
+      "Power monitoring: the PDB measures battery voltage and high-side current, regulates 12 V and 5 V rails, and exposes a UART telemetry link.",
       "Motor development: the supplied single-motor ESC revision combines an STM32G071, three-phase gate driver, MOSFET bridge and current feedback.",
       "System integration: DShot, UART and I²C signal paths can be brought through HITL for controlled bench testing."
     ],
@@ -431,7 +431,7 @@ window.DEESC_PROJECTS = [
     ],
     "outcome": "Custom assemblies and bench fixtures are built. Firmware, motor-control behavior and broader system integration remain in development; flight validation is a later stage.",
     "systemCaption": "Functional roles in the platform. Power and data follow separate paths; these blocks are not a series power connection.",
-    "hardwareTitle": "Each board has a defined job.",
+    "hardwareTitle": "Board functions and interfaces",
     "hardwareIntro": "Separating flight sensing, power conversion and motor switching makes the interfaces explicit and allows individual assemblies to be brought up and revised.",
     "hardware": [
       {
@@ -477,7 +477,7 @@ window.DEESC_PROJECTS = [
       {
         "index": "04",
         "title": "Rotor-position encoder",
-        "role": "Mechanical position becomes feedback",
+        "role": "Rotor-position feedback",
         "body": "A separate MT6701 magnetic encoder board exposes a rotor-position signal to the motor controller. Its connector carries 3.3 V, ground and the encoder output; additional pads provide access during development.",
         "details": [
           "A magnet and sensor form a contactless position interface",
@@ -516,7 +516,7 @@ window.DEESC_PROJECTS = [
       }
     ],
     "pathsNote": "The external MT6701 encoder feeds the ESC. The FMU also carries its own inertial, pressure and magnetic sensors; those are separate from the external navigation paths routed through HITL.",
-    "validationTitle": "Bring up the parts. Then test their interaction.",
+    "validationTitle": "Board bring-up and integration testing",
     "validationIntro": "Development moves from individual boards to the connected motor bench. The test setup makes it possible to compare commanded behavior with electrical measurements and physical response.",
     "validation": [
       {
@@ -533,7 +533,7 @@ window.DEESC_PROJECTS = [
       },
       {
         "label": "INTEGRATION",
-        "title": "Bring the boards together",
+        "title": "System integration",
         "body": "Use HITL to select command sources and observe the connected hardware from the computer. Retain measurements and test settings for comparison between runs.",
         "scope": "System integration on the bench"
       }
@@ -546,7 +546,7 @@ window.DEESC_PROJECTS = [
   {
     "id": "finch-voice-assistant",
     "number": "01",
-    "category": "Built for People",
+    "category": "Personal Devices",
     "title": "Finch Voice Assistant",
     "subtitle": "A homemade, Alexa-style voice assistant with custom electronics: speak to it, get an answer, and hear the reply.",
     "hero": "finchv1 AI assistant assy AND finch v2 PCB.jpeg",
@@ -988,7 +988,7 @@ window.DEESC_PROJECTS = [
       }
     ],
     "systemCaption": "The PC network link and the routed board-level signals do different jobs: Ethernet carries commands and telemetry, while the multiplexers select electrical signal paths.",
-    "hardwareTitle": "Built to connect the bench.",
+    "hardwareTitle": "Controller, power and interfaces",
     "hardwareIntro": "The board brings control, communication and storage together, with direct access to the interfaces under test.",
     "hardware": [
       {
@@ -1016,7 +1016,7 @@ window.DEESC_PROJECTS = [
       {
         "index": "03",
         "title": "Storage & physical layout",
-        "role": "Keep the test observable",
+        "role": "Local storage",
         "body": "A microSD socket and FM25V05 SPI FRAM provide local storage hardware. The six-layer stack uses signal, ground, signal, power, ground and signal layers within the 90 × 65 mm outline.",
         "details": [
           "Connectors arranged around the PCB perimeter",
@@ -1027,8 +1027,8 @@ window.DEESC_PROJECTS = [
     ],
     "routeExplorer": true,
     "software": {
-      "title": "One command path. One measurement path.",
-      "intro": "The Python console is the operator interface. Test execution and peripheral timing live on the board; the network joins the two.",
+      "title": "TCP commands and UDP telemetry",
+      "intro": "The Python console is the operator interface. The board handles test execution and peripheral timing, with Ethernet carrying commands and measurements.",
       "paths": [
         {
           "label": "CONTROL · TCP",
@@ -1069,8 +1069,8 @@ window.DEESC_PROJECTS = [
       ],
       "ownership": "I designed the test hardware and integrated the bench workflow. The Python console and tuning tools were built with AI assistance. I review their behavior through instrument comparisons, captured traffic and repeatable bench trials."
     },
-    "validationTitle": "Check the behavior against something independent.",
-    "validationIntro": "A readable GUI value is only one observation. I use instrument comparisons, packet captures and hardware response to check different parts of the test chain.",
+    "validationTitle": "Independent measurement checks",
+    "validationIntro": "I check the GUI readings and test behavior using independent instruments, packet captures and the measured hardware response.",
     "validation": [
       {
         "label": "INSTRUMENT COMPARISON",
@@ -1098,8 +1098,8 @@ window.DEESC_PROJECTS = [
       {
         "id": "bench-story",
         "number": "01",
-        "eyebrow": "FROM DESIGN TO THE BENCH",
-        "title": "Real hardware. Accessible signals.",
+        "eyebrow": "BOARD BRING-UP",
+        "title": "HITL board and signal interfaces",
         "image": "photo-hitl-bringup.webp",
         "alt": "Assembled HITL board with Ethernet and bring-up wiring",
         "caption": "HITL / board bring-up",
@@ -1110,13 +1110,13 @@ window.DEESC_PROJECTS = [
           "Independent instruments and saved measurements to check what the console reports"
         ],
         "link": "#signal-routing",
-        "linkLabel": "Explore the signal paths"
+        "linkLabel": "View signal routing"
       },
       {
         "id": "motor-tuning",
         "number": "02",
-        "eyebrow": "AI IN THE TUNING WORKFLOW",
-        "title": "Measure. Adjust. Run it again.",
+        "eyebrow": "AI-ASSISTED MOTOR TUNING",
+        "title": "Open-loop motor tuning",
         "image": "photo-drone-bench.webp",
         "alt": "Custom motor-drive electronics and the motor thrust-test fixture",
         "caption": "Motor bench / open-loop development",
@@ -1135,7 +1135,7 @@ window.DEESC_PROJECTS = [
         "id": "network-results",
         "number": "03",
         "eyebrow": "WIRESHARK / MEASURED RESULTS",
-        "title": "Follow the packets. Check the payload.",
+        "title": "Ethernet test results",
         "image": "photo-hitl-wireshark-tcp.png",
         "alt": "Wireshark capture of the successful 1 MiB TCP echo at 480 MHz CPU and 32 MHz SPI",
         "caption": "TCP echo / original Wireshark capture",
