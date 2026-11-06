@@ -289,7 +289,7 @@ window.DEESC_PROJECTS = [
     "id": "modular-drone-platform",
     "number": "01",
     "category": "Selected Work",
-    "title": "Modular Drone Platform",
+    "title": "4S, 5-inch, Quadcopter Prototype",
     "subtitle": "Custom flight control, power distribution and motor drives, developed together with a dedicated bench-test platform.",
     "hero": "assy img 1.jpeg",
     "tags": [
