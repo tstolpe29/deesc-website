@@ -1122,6 +1122,7 @@ window.DEESC_PROJECTS = [
         "caption": "Motor bench / open-loop development",
         "body": "The Python console connects an AI planner to bounded motor trials. It can sweep commanded speed at a fixed duty, read current and synchronism, and propose a duty-to-RPM lookup table. The same bench supports manual tuning and DMM comparisons.",
         "points": [
+          "Manual control through the Python GUI for real-time motor tuning",
           "AI chooses trials; Python checks requests and records the results",
           "HITL carries commands and telemetry; the ESC generates the motor waveforms",
           "The operator can stop the run; current, stale-data and energy checks bound the jobs"
