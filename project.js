@@ -7,7 +7,7 @@
   const e = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   if (!p) {
     document.title = 'Project not found | DEESC Prototyping';
-    mount.innerHTML = '<section class="container page-intro error-page"><p class="eyebrow">PROJECT NOT FOUND</p><h1>Let’s get you<br>back to the work.</h1><p>This project link is missing or no longer available.</p><a class="button primary" href="index.html">View selected work <span>↗</span></a></section>';
+    mount.innerHTML = '<section class="container page-intro error-page"><p class="eyebrow">PROJECT NOT FOUND</p><h1>Project not<br>available.</h1><p>This project link is missing or no longer available.</p><a class="button primary" href="index.html">View selected work <span>↗</span></a></section>';
     return;
   }
   const groupPages = {selected:['index.html#selected-work','Selected work'],people:['people.html','Personal devices'],other:['projects.html','Other projects']};

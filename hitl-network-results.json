@@ -113,7 +113,7 @@
   "tcp_echo_seconds": 1.443,
   "udp_payload_lengths_tested": "0 through 1448 application bytes",
   "application_crc_test": "One deliberately bad application CRC rejected; following valid echo passed.",
-  "connection_caveat": "Capture review found an initial TCP reset from the board followed by another SYN and a completed handshake in 600 of 3,397 normal TCP cases. The repeated connection setup remains a reliability and timing limitation. Their median first SYN to successful handshake time was 509.9 ms.",
+  "connection_caveat": "Capture review found an initial TCP reset from the board followed by another SYN and a completed handshake in 600 of 3,397 normal TCP cases. The repeated connection setup remains a reliability and timing limitation. These cases had a median of 509.9 ms from the first SYN to a successful handshake.",
   "rate_definition": "Counts include functional and soak checks. Each KiB/s value is one complete 1 MiB echo, including connection, host Python checks and logging, TCP window and acknowledgment timing, and half close; bytes are counted once. It is not an isolated CPU benchmark or Ethernet line rate.",
   "clock_scope": "CPU clock, SPI clock and Ethernet link rate are separate quantities. Independent SWD register decoding verified clock settings; W5500 status reported a 100 Mbps link in all nine profiles. Host timed DWT intervals are additional checks, not calibrated frequency measurements.",
   "capture_excerpt": "Selected TCP stream, UDP payload/CRC exchanges, and board-related ARP/ICMP packets across the full diagnostic session. This excerpt includes traffic outside the final nine-profile matrix. Excerpt frame numbers differ from original screenshot frame numbers.",
