@@ -983,8 +983,8 @@ window.DEESC_PROJECTS = [
     ],
     "documents": [
       {
-        "href": "assets/docs/HITL-schematic-sheets.pdf",
-        "label": "HITL schematic sheets · 6 pages"
+        "href": "assets/docs/HITL-schematic-sheets.pdf?v=20261111",
+        "label": "HITL schematic · 8 pages"
       }
     ],
     "systemCaption": "The PC network link and the routed board-level signals do different jobs: Ethernet carries commands and telemetry, while the multiplexers select electrical signal paths.",
@@ -1091,7 +1091,7 @@ window.DEESC_PROJECTS = [
         "scope": "Console-to-hardware behavior"
       }
     ],
-    "documentNote": "Working engineering draft covering power, the controller, signal routing, memory and external interfaces. These are the six circuit sheets from the supplied HITL design.",
+    "documentNote": "Complete HITL engineering draft, including the cover, power, controller, signal routing, memory and external interfaces.",
     "heroFit": "contain",
     "heroAlt": "HITL test platform 3D PCB render with the STM32 controller, Ethernet, microSD and interface connectors",
     "stories": [

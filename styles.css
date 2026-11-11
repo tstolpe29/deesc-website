@@ -20,3 +20,16 @@
 /* Final image framing keeps both flagship builds visible at small widths. */
 @media(min-width:801px){.hero-shade{background:linear-gradient(90deg,rgba(7,14,23,.55),rgba(7,14,23,.18) 52%,transparent 75%),linear-gradient(180deg,rgba(8,15,24,.87) 0%,rgba(8,15,24,.55) 29%,transparent 62%,rgba(8,15,24,.36) 87%,#0a1018 100%)}}
 @media(max-width:480px){.hero-photo{height:auto;width:100%;bottom:22px;object-fit:contain}.hero{height:690px}.hero-shade{background:linear-gradient(180deg,#0b1420 0%,#0b1420 38%,rgba(11,20,32,.3) 57%,transparent 72%,rgba(10,16,24,.08) 90%,#0a1018 100%)}}
+
+/* Lessons article shares the existing site header, palette and footer. */
+.lessons-article{max-width:780px;padding-block:68px 80px}
+.lessons-heading{padding-bottom:32px;margin-bottom:36px;border-bottom:1px solid var(--line)}
+.lessons-heading .eyebrow{margin-bottom:18px}
+.lessons-heading h1{font-size:clamp(38px,5vw,58px);line-height:1.1;margin-bottom:0}
+.lessons-body{font-size:17px;line-height:1.85}
+.lessons-body p{color:#c4ceda;margin-bottom:25px}
+.lessons-body p:first-child{font-size:20px;line-height:1.7;color:var(--text)}
+.lessons-body .lesson-takeaway{font-size:24px;color:var(--text);border-left:3px solid var(--blue);padding-left:22px;margin-block:36px}
+.lessons-back{margin-top:22px}
+@media(min-width:801px) and (max-width:1100px){.main-nav{gap:17px}.main-nav a{font-size:12px}.nav-wrap{gap:24px}}
+@media(max-width:800px){.lessons-article{padding-block:42px 54px}.lessons-body{font-size:16px;line-height:1.8}.lessons-body p:first-child{font-size:18px}.lessons-body .lesson-takeaway{font-size:21px}}

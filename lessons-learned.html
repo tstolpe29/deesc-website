@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1018">
+  <title>Lessons Learned | DEESC Prototyping</title>
+  <meta name="description" content="135 minutes with SpaceX: a personal reflection on engineering interviews, design decisions and understanding a project end to end.">
+  <link rel="canonical" href="https://deescproto.com/lessons-learned.html">
+  <link rel="icon" href="assets/brand/deesc-chip-blue.png">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="135 Minutes with SpaceX | DEESC Prototyping">
+  <meta property="og:description" content="What engineering interviews exposed, and the lessons already being applied.">
+  <meta property="og:url" content="https://deescproto.com/lessons-learned.html">
+  <meta property="og:image" content="https://deescproto.com/photo-hitl-bench.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20261111-lessons">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-wrap">
+ <a class="brand" href="index.html" aria-label="DEESC Prototyping home"><img src="assets/brand/deesc-wordmark-blue.png" width="151" height="39" alt="DEESC"><span>PROTOTYPING</span></a>
+ <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span>Menu</span><span class="menu-icon" aria-hidden="true">☰</span></button>
+ <nav class="main-nav" id="main-nav" aria-label="Main navigation"><a href="index.html">Selected Work</a><a href="people.html">Personal Devices</a><a href="projects.html">Other Projects</a><a href="lessons-learned.html" aria-current="page">Lessons Learned</a><a href="about.html">About / Contact</a></nav></div></header>
+<main id="main">
+  <article class="lessons-article container" aria-labelledby="lessons-title">
+    <header class="lessons-heading">
+      <p class="eyebrow">LESSONS LEARNED</p>
+      <h1 id="lessons-title">135 Minutes with SpaceX</h1>
+    </header>
+    <div class="lessons-body">
+        <p>135 minutes with SpaceX probably made me a better engineer than my internship and entire degree combined. Perhaps I fell victim to the “students know everything” mindset, but SpaceX figured out how to hijack the James Webb Space Telescope and use it to zoom in on a major flaw.</p>
+        <p>I have a 3.9 GPA in my electrical engineering classes, excluding the chemistry and GE courses I took before my military experience, and about 1.5 years of internship experience at Parker Hannifin. I’m lucky Parker has given me, an intern, such a close level of involvement in some of their products. What I’m getting at is that I was proactive throughout my engineering degree. I was hungry to learn.</p>
+        <p>Since I’m one of the lucky students who already has a job lined up after graduation, I figured I would step outside my comfort zone and apply to jobs I didn’t think I could get.</p>
+        <p>Round 1… round 2… round 3… and now I’m waiting on a response from NASA JPL. Whoa, that wasn’t so difficult. I was honestly expecting to get chewed up and hung up on. Alright, what else is available?</p>
+        <p>SpaceX. Round 1, with Falcon 9, for a PCB design role.</p>
+        <p>I felt like I had this. After all, I’d spent every single weekend for the last two years playing around in Altium. Literally not a single weekend off, because I enjoyed it so much. It didn’t feel like work. Receiving a board, figuring out why it wasn’t working, and getting that “FUCK YES” moment when it did what it was intended to do became addictive. Passion turned into obsession really quickly.</p>
+        <p>However, the Falcon 9 team member came in guns blazing and humbled me without even blinking.</p>
+        <p>Why low-side current sensing instead of high-side? How would you determine the junction temperature without a thermal camera, thermocouple, or any tools?</p>
+        <p>Why, why, why? How, how?</p>
+        <p>This is where I had failed as a young engineer. Why low-side current sensing? Because all the TI reference designs I had studied used low-side current sensing under their BLDC MOSFETs. But I had never questioned why.</p>
+        <p>So I turned around and went through every resistor, every capacitor, every component, and all the math. When something had gone wrong, why had it happened? How?</p>
+        <p>Then I applied to another SpaceX new-grad role, this time as a test engineer for Starshield. I’d just spent 100–150 hours answering every “why” and “how” I could think of about my drone hardware. So let’s try again…</p>
+        <p>Round 1… cleared.</p>
+        <p>Round 2… cleared.</p>
+        <p>Round 3… WOW, that was a clever first question.</p>
+        <p>I came up with a destructive solution and was asked for a non-destructive one. I tried to talk my way through it but couldn’t get to the solution.</p>
+        <p>On the second question, I was able to ninja-defuse my way through multiple layers of “why, why, why!” That feeling of success was stronger than the excitement from the 25–30 PCB designs that had hit my doorstep and worked, AND my Parker PCBs, combined.</p>
+        <p>But back to that first question.</p>
+        <p>I plugged it into ChatGPT and Claude—the paid versions—and disproved all of their answers on a breadboard, despite how confident they were. The internet wasn’t much help either. I spent six hours after the interview doing backflips on a breadboard and mashing my mouse in LTspice, trying to find a working answer.</p>
+        <p>The next day, I got the call inviting me to round 4.</p>
+        <p>I have a Parker project with no software that I can speak about end to end. But I was worried about walking the line of sharing intellectual property, so I decided it would be best not to use that project.</p>
+        <p>Well, I have various other projects that, in my opinion, have a heroic amount of complexity for the student level. Other students have done cartoon-style jaw drops when I’ve shown them my projects.</p>
+        <p>But there was still a massive flaw.</p>
+        <p>My goal was to focus on hardware. I wanted to learn anything and everything I could about it. To do that, I let AI vibe code all my firmware and software so I could keep focusing on hardware.</p>
+        <p>At Parker, my designs and projects didn’t require much software beyond things like MATLAB worst-case analysis. Meanwhile, every personal project involving firmware meant coming up with an AI prompt that answered all the whys and hows.</p>
+        <p>For some reason, I was applying that thinking to my prompts, but not consistently elsewhere. That’s interesting in itself…</p>
+        <p>Now I need to go back and digest the codebases behind my projects so I can understand each one end to end. Otherwise, they all contain a black box that I don’t understand and rely on someone—or something, AI—to explain to me.</p>
+        <p>Looking back, my best card might have been asking Parker what I could share and rolling with that project. However, getting through the intricate web of SpaceX’s interview process exposed another massive gap in my early-career engineering thinking.</p>
+        <p class="lesson-takeaway"><strong>Know your project end to end.</strong></p>
+        <p>How am I going to stand in front of six SpaceX engineers with 50+ years of combined experience and give what is basically a critical design review if I vibe coded the entire codebase?</p>
+        <p>I’m going to get stepped on so fast! I might as well walk myself out if I can’t even draw a flowchart of how the software works without asking AI how its code works.</p>
+        <p>But here’s the turn…</p>
+        <p>I’m already applying these lessons at work.</p>
+        <p>135 minutes with SpaceX made me a better engineer. Thank you.</p>
+    </div>
+    <a class="text-link lessons-back" href="#lessons-title">Back to top <span aria-hidden="true">↑</span></a>
+  </article>
+</main>
+<footer class="site-footer"><div class="container"><div class="footer-top"><div><p class="eyebrow">CONTACT</p><a class="footer-hello" href="mailto:thomasstolpe424@gmail.com">Get in touch <span aria-hidden="true">↗</span></a></div><a class="email-link" href="mailto:thomasstolpe424@gmail.com">thomasstolpe424@gmail.com</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> DEESC Prototyping</span><span>Hardware design & system integration</span><a href="https://github.com/tstolpe29" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></footer>
+<script src="script.js?v=20261102b"></script>
+</body>
+</html>

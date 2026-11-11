@@ -1,12 +1,13 @@
 # DEESC Prototyping
 
-Thomas Stolpe's electronics and embedded-systems portfolio, hosted at https://deescproto.com.
+Electronics and embedded-systems portfolio, hosted at https://deescproto.com.
 
 ## Pages
 
 - `index.html`: the Modular Drone Platform and HITL Test Platform only.
 - `people.html`: Finch Voice Assistant and Haptic Reminder.
 - `projects.html`: short explanations of smaller projects.
+- `lessons-learned.html`: personal reflection on engineering interviews and understanding projects end to end.
 - `about.html`: engineering background, capabilities and contact links.
 - `project.html?id=...`: project notes, documents and keyboard-accessible photo galleries.
 
@@ -32,6 +33,6 @@ The HITL page leads with alternating numbered bench-photo, AI motor-tuning and E
 
 The AI-assisted motor section cites the completed 89-job tuning session and its lookup-table check, current trips and speed-ripple limitations. Its JSON summary describes the division between trial planning, Python checks and local ESC commutation. No physical hardware is controlled by this website.
 
-The supplied PDB, FMU, motor-drive and encoder schematics were used only to explain the system. They are not included in this package. The new public document, `assets/docs/HITL-schematic-sheets.pdf`, contains only the six HITL circuit sheets. Existing documents for unrelated portfolio projects are retained.
+The supplied PDB, FMU, motor-drive and encoder schematics were used only to explain the system. They are not included in this package. The new public document, `assets/docs/HITL-schematic-sheets.pdf`, contains the supplied eight-page HITL draft with personal author names removed. Existing documents for unrelated portfolio projects are retained.
 
 When deploying, replace the site contents with this package while preserving any hosting configuration outside it. If applying an overlay to an existing checkout, also remove `assets/projects/modular-drone-platform/04.png`: this old circuit-diagram image has been removed from the updated site. Keep `CNAME` unchanged. This package does not itself update the live website.
