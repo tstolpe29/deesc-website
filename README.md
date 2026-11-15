@@ -7,7 +7,6 @@ Electronics and embedded-systems portfolio, hosted at https://deescproto.com.
 - `index.html`: the Modular Drone Platform and HITL Test Platform only.
 - `people.html`: Finch Voice Assistant and Haptic Reminder.
 - `projects.html`: short explanations of smaller projects.
-- `lessons-learned.html`: personal reflection on engineering interviews and understanding projects end to end.
 - `about.html`: engineering background, capabilities and contact links.
 - `project.html?id=...`: project notes, documents and keyboard-accessible photo galleries.
 
