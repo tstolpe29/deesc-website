@@ -985,6 +985,18 @@ window.DEESC_PROJECTS = [
       {
         "href": "assets/docs/HITL-schematic-sheets.pdf?v=20261111",
         "label": "HITL schematic · 8 pages"
+      },
+      {
+        "href": "assets/downloads/HITL-KiCad-source.zip?v=20261125",
+        "label": "KiCad 10 project · schematics, board, libraries",
+        "kind": "ZIP · 10 MB",
+        "download": true
+      },
+      {
+        "href": "assets/downloads/HITL-Altium-source.zip?v=20261125",
+        "label": "Altium Designer project · schematics, board, libraries",
+        "kind": "ZIP · 10 MB",
+        "download": true
       }
     ],
     "systemCaption": "The PC network link and the routed board-level signals do different jobs: Ethernet carries commands and telemetry, while the multiplexers select electrical signal paths.",

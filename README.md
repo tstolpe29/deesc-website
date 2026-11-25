@@ -35,3 +35,13 @@ The AI-assisted motor section cites the completed 89-job tuning session and its 
 The supplied PDB, FMU, motor-drive and encoder schematics were used only to explain the system. They are not included in this package. The new public document, `assets/docs/HITL-schematic-sheets.pdf`, contains the supplied eight-page HITL draft with personal author names removed. Existing documents for unrelated portfolio projects are retained.
 
 When deploying, replace the site contents with this package while preserving any hosting configuration outside it. If applying an overlay to an existing checkout, also remove `assets/projects/modular-drone-platform/04.png`: this old circuit-diagram image has been removed from the updated site. Keep `CNAME` unchanged. This package does not itself update the live website.
+
+## November 25, 2026 update
+
+The HITL page's design documents now include the board's source files as downloads:
+`assets/downloads/HITL-KiCad-source.zip` (a KiCad 10 project converted from the Altium design: seven schematic
+sheets, the six-layer board with 3D models, symbol and footprint libraries, plots and conversion notes) and
+`assets/downloads/HITL-Altium-source.zip` (the Altium project file, schematic sheets, board and library sources;
+no history, logs or fabrication outputs). The project supervisor's name is removed from the cover sheet in both
+packages; the designer's and checker's names remain. `project.js` renders a document entry that has
+`"download": true` as a download link with its `kind` label; other entries stay PDF links.
