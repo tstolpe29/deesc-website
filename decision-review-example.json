@@ -1,0 +1,372 @@
+{
+  "label": "Recorded AI example using entirely fictional workshop facts. No factual verification was performed.",
+  "recordedAt": "2026-11-26T23:51:23.266Z",
+  "brief": {
+    "version": 1,
+    "kind": "decision",
+    "template": "challenge",
+    "question": "Challenge the plan to repair the current workshop printer. Compare repair, replacement, and outsourcing, then recommend the next decision and tests. Every figure is fictional; this is a synthetic product example.",
+    "options": [
+      {
+        "id": "O1",
+        "label": "Repair current printer",
+        "description": "Repair costs $300. Reliability after repair is uncertain."
+      },
+      {
+        "id": "O2",
+        "label": "Replace printer",
+        "description": "Replacement costs $1,200 and arrives in one week."
+      },
+      {
+        "id": "O3",
+        "label": "Outsource jobs",
+        "description": "Outsourcing costs $60 per job. Future job volume is unknown."
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "text": "The workshop must complete its next work within 14 days."
+      },
+      {
+        "id": "C2",
+        "text": "Upfront spending cannot exceed $1,500."
+      }
+    ],
+    "successCriteria": [
+      {
+        "id": "K1",
+        "text": "A credible path to meeting the 14-day deadline."
+      },
+      {
+        "id": "K2",
+        "text": "Identify reliability assumptions, missing volume data, and a reversible next step."
+      }
+    ],
+    "references": [
+      {
+        "id": "S1",
+        "title": "Fictional workshop facts",
+        "text": "Repair costs $300. Reliability after repair is uncertain. Replacement costs $1,200 and arrives in one week. Outsourcing costs $60 per job."
+      },
+      {
+        "id": "S2",
+        "title": "Fictional planning constraints",
+        "text": "The deadline is 14 days. The upfront budget is $1,500. Future job volume is unknown. All facts in this example are invented for a product demonstration."
+      }
+    ]
+  },
+  "plan": {
+    "version": 3,
+    "mode": "compare",
+    "agents": [
+      {
+        "id": "openai-default",
+        "name": "OpenAI",
+        "connectionId": "openai-default",
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "instructions": "",
+        "enabled": true
+      },
+      {
+        "id": "claude-default",
+        "name": "Claude",
+        "connectionId": "claude-default",
+        "provider": "claude",
+        "model": "claude-haiku-5-5",
+        "instructions": "",
+        "enabled": true
+      }
+    ],
+    "rounds": 1,
+    "moderatorId": "claude-default",
+    "maxOutputTokens": 1500,
+    "maxCalls": 3,
+    "outputTokenCeiling": 4500,
+    "calls": [
+      {
+        "callId": "r1:openai-default",
+        "agentId": "openai-default",
+        "name": "OpenAI",
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "round": 1,
+        "phase": "opening"
+      },
+      {
+        "callId": "r1:claude-default",
+        "agentId": "claude-default",
+        "name": "Claude",
+        "provider": "claude",
+        "model": "claude-haiku-5-5",
+        "round": 1,
+        "phase": "opening"
+      },
+      {
+        "callId": "summary:claude-default",
+        "agentId": "claude-default",
+        "name": "Claude",
+        "provider": "claude",
+        "model": "claude-haiku-5-5",
+        "round": 2,
+        "phase": "summary"
+      }
+    ],
+    "brief": {
+      "version": 1,
+      "kind": "decision",
+      "template": "challenge",
+      "question": "Challenge the plan to repair the current workshop printer. Compare repair, replacement, and outsourcing, then recommend the next decision and tests. Every figure is fictional; this is a synthetic product example.",
+      "options": [
+        {
+          "id": "O1",
+          "label": "Repair current printer",
+          "description": "Repair costs $300. Reliability after repair is uncertain."
+        },
+        {
+          "id": "O2",
+          "label": "Replace printer",
+          "description": "Replacement costs $1,200 and arrives in one week."
+        },
+        {
+          "id": "O3",
+          "label": "Outsource jobs",
+          "description": "Outsourcing costs $60 per job. Future job volume is unknown."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "C1",
+          "text": "The workshop must complete its next work within 14 days."
+        },
+        {
+          "id": "C2",
+          "text": "Upfront spending cannot exceed $1,500."
+        }
+      ],
+      "successCriteria": [
+        {
+          "id": "K1",
+          "text": "A credible path to meeting the 14-day deadline."
+        },
+        {
+          "id": "K2",
+          "text": "Identify reliability assumptions, missing volume data, and a reversible next step."
+        }
+      ],
+      "references": [
+        {
+          "id": "S1",
+          "title": "Fictional workshop facts",
+          "text": "Repair costs $300. Reliability after repair is uncertain. Replacement costs $1,200 and arrives in one week. Outsourcing costs $60 per job."
+        },
+        {
+          "id": "S2",
+          "title": "Fictional planning constraints",
+          "text": "The deadline is 14 days. The upfront budget is $1,500. Future job volume is unknown. All facts in this example are invented for a product demonstration."
+        }
+      ]
+    },
+    "inputBudgetBytes": 12288,
+    "reportSchemaVersion": 2
+  },
+  "replies": [
+    {
+      "callId": "r1:openai-default",
+      "agentId": "openai-default",
+      "name": "OpenAI",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "round": 1,
+      "phase": "opening",
+      "status": "ok",
+      "text": "**Challenge:** None of the options is yet shown to meet the 14-day deadline. The brief gives prices and, for replacement, a delivery estimate—but not repair turnaround, post-repair reliability, installation time, outsourcing capacity, or how many jobs must be completed. The figures are fictional and treated here as supplied, not verified (S1, S2).\n\n| Option | Potential advantage | Main uncertainty or risk |\n|---|---|---|\n| **Repair** | Lowest stated cost: $300. | No repair timeline or evidence it will work reliably afterward. A failed repair could consume deadline time. |\n| **Replace** | Stated delivery in one week, leaving roughly seven days before the deadline. | Delivery is not the same as being installed and ready; setup, compatibility, and performance are unspecified. Costs $1,200 of the $1,500 upfront limit. |\n| **Outsource** | Could avoid waiting for an internal printer to be fixed or delivered. | At $60 per job, total cost depends on unknown job volume. Capacity and turnaround are also unknown. |\n\n**Recommendation: make a short, reversible decision gate—not an unconditional repair or purchase.** First establish how many jobs are due and when, then get a firm repair diagnosis and turnaround estimate, and confirm an outsourcing provider’s capacity, price, and delivery date. If outsourcing can cover the deadline-critical work within the budget, use it as a limited fallback while deciding whether to repair or replace. Avoid committing to replacement plus outsourcing until the budget treatment and job count are clear: at the stated prices, $1,200 leaves only $300 under the cap, equivalent to five $60 jobs before any other costs (S1, S2).\n\n**Tests before committing:**\n1. Confirm the number of jobs, required completion dates, and acceptable quality.\n2. Ask whether repair includes a test print and what happens if it fails; confirm a completion date.\n3. Confirm replacement setup time and test it against the remaining schedule after delivery.\n4. Obtain an outsourcing quote and written capacity/turnaround for the actual job count.\n5. Clarify whether the $1,500 limit covers only upfront payments or all costs through completion.\n\nThe key missing evidence is whether any option has a credible, confirmed path to completing the required work on time—not just whether its stated price fits the cap.",
+      "usage": {
+        "inputTokens": 471,
+        "outputTokens": 696
+      },
+      "elapsedMs": 7387,
+      "contextShortened": false
+    },
+    {
+      "callId": "r1:claude-default",
+      "agentId": "claude-default",
+      "name": "Claude",
+      "provider": "claude",
+      "model": "claude-haiku-5-5",
+      "round": 1,
+      "phase": "opening",
+      "status": "ok",
+      "text": "Here is my challenge to the plan, working only from the supplied brief (fictional figures, unverified by me).\n\n**What the brief supports**\n\n- Repair ($300) fits the budget and could be done quickly, but the supplied text gives no repair lead time, so it is not established that it meets the 14-day deadline.\n- Replacement ($1,200) fits the $1,500 cap with $300 to spare and arrives in one week, which leaves about a week of slack for installation and testing. It is the only option with a stated timeline that clearly meets C1.\n- Outsourcing ($60 per job) avoids capital spending entirely and is reversible, but total cost is unknown because future volume is unknown.\n\n**Challenges to the plan's assumptions**\n\n1. \"Repair\" is treated as a single option, but its reliability is \"uncertain.\" If a repaired printer fails mid-job, the deadline is at risk with no fallback. The plan needs a failure-mode assessment, not just a cost.\n2. Replacement's one-week delivery assumes no installation, calibration, or shipping delays. Those are unstated and could consume the slack.\n3. Combining options is not considered. Outsourcing could cover the deadline-critical jobs while a repair or replacement decision is made, which may dominate either alone.\n4. The $1,500 cap is treated as a constraint on upfront spend, but replacement plus any unexpected repair or outsourcing could exceed it. Total exposure over the decision window should be checked.\n5. The 14-day requirement is not clearly tied to job volume. Without volume data, you cannot tell whether a $1,200 asset pays back against $60-per-job outsourcing.\n\n**Missing data and tests**\n\n- Repair lead time and a written reliability estimate or test-run result.\n- Replacement installation and calibration time, and any shipping risk.\n- Expected job volume over 3, 6, and 12 months, to compute break-even against outsourcing (the replacement cost equals 20 outsourced jobs at $60).\n- A short test: run a sample job on the repaired unit before committing the deadline to it.\n\n**Recommended next step (reversible)**\n\nDo not commit to replacement or repair yet. Immediately place the deadline-critical jobs with an outsourcing provider (reversible, within budget, and it secures C1 regardless of the printer decision). In parallel, get a repair lead time and run a test job, and request the replacement's installation timeline. Decide on the capital purchase once volume data and repair test results are in.\n\n**Caveat:** This relies entirely on the supplied figures. I have not verified any of them, and the brief's \"uncertain\" reliability means the repair recommendation cannot be stronger than the evidence you collect.",
+      "usage": {
+        "inputTokens": 760,
+        "outputTokens": 883
+      },
+      "elapsedMs": 5319,
+      "contextShortened": false
+    },
+    {
+      "callId": "summary:claude-default",
+      "agentId": "claude-default",
+      "name": "Claude",
+      "provider": "claude",
+      "model": "claude-haiku-5-5",
+      "round": 2,
+      "phase": "summary",
+      "status": "ok",
+      "text": "{\"schemaVersion\":2,\"recommendation\":{\"optionId\":null,\"text\":\"Set a reversible decision gate: confirm job volume and deadlines, get repair and outsourcing timelines, then choose.\",\"replyIds\":[\"r1:openai-default\",\"r1:claude-default\"],\"evidence\":[{\"sourceId\":\"S1\",\"quote\":\"Reliability after repair is uncertain.\"}]},\"tradeoffs\":[{\"text\":\"Outsourcing is reversible but total cost depends on unknown volume.\",\"replyIds\":[\"r1:claude-default\"],\"evidence\":[{\"sourceId\":\"S1\",\"quote\":\"Outsourcing costs $60 per job.\"}]},{\"text\":\"Replacement fits the cap and arrives in one week but leaves little slack.\",\"replyIds\":[\"r1:openai-default\"],\"evidence\":[{\"sourceId\":\"S1\",\"quote\":\"Replacement costs $1,200 and arrives in one week.\"}]}],\"assumptions\":[{\"text\":\"Stated prices and delivery times are accurate and complete, which is unverified.\",\"replyIds\":[],\"evidence\":[{\"sourceId\":\"S2\",\"quote\":\"All facts in this example are invented\"}]}],\"risks\":[{\"text\":\"A failed repair mid-job could consume deadline time with no fallback.\",\"replyIds\":[\"r1:claude-default\"],\"evidence\":[{\"sourceId\":\"S1\",\"quote\":\"Reliability after repair is uncertain.\"}]},{\"text\":\"Installation or setup delays could erode replacement slack.\",\"replyIds\":[\"r1:openai-default\"],\"evidence\":[{\"sourceId\":\"S1\",\"quote\":\"Replacement costs $1,200 and arrives in one week.\"}]}],\"nextSteps\":[{\"text\":\"Confirm job count and due dates, then request repair and outsourcing timelines.\",\"replyIds\":[\"r1:openai-default\",\"r1:claude-default\"],\"evidence\":[{\"sourceId\":\"S2\",\"quote\":\"Future job volume is unknown.\"}]}],\"unresolvedQuestions\":[\"Does any option confirmed meet the 14-day deadline, and does the $1,500 cap cover all costs through completion?\"]}",
+      "usage": {
+        "inputTokens": 3625,
+        "outputTokens": 707
+      },
+      "elapsedMs": 6104,
+      "contextShortened": false
+    }
+  ],
+  "reportStatus": "valid",
+  "report": {
+    "schemaVersion": 2,
+    "recommendation": {
+      "optionId": null,
+      "optionStatus": "none",
+      "text": "Set a reversible decision gate: confirm job volume and deadlines, get repair and outsourcing timelines, then choose.",
+      "replyIds": [
+        "r1:openai-default",
+        "r1:claude-default"
+      ],
+      "unmatchedReplyIds": [],
+      "evidence": [
+        {
+          "sourceId": "S1",
+          "quote": "Reliability after repair is uncertain.",
+          "status": "matched",
+          "reason": null
+        }
+      ],
+      "sourceIds": [
+        "S1"
+      ]
+    },
+    "tradeoffs": [
+      {
+        "text": "Outsourcing is reversible but total cost depends on unknown volume.",
+        "replyIds": [
+          "r1:claude-default"
+        ],
+        "unmatchedReplyIds": [],
+        "evidence": [
+          {
+            "sourceId": "S1",
+            "quote": "Outsourcing costs $60 per job.",
+            "status": "matched",
+            "reason": null
+          }
+        ],
+        "sourceIds": [
+          "S1"
+        ]
+      },
+      {
+        "text": "Replacement fits the cap and arrives in one week but leaves little slack.",
+        "replyIds": [
+          "r1:openai-default"
+        ],
+        "unmatchedReplyIds": [],
+        "evidence": [
+          {
+            "sourceId": "S1",
+            "quote": "Replacement costs $1,200 and arrives in one week.",
+            "status": "matched",
+            "reason": null
+          }
+        ],
+        "sourceIds": [
+          "S1"
+        ]
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Stated prices and delivery times are accurate and complete, which is unverified.",
+        "replyIds": [],
+        "unmatchedReplyIds": [],
+        "evidence": [
+          {
+            "sourceId": "S2",
+            "quote": "All facts in this example are invented",
+            "status": "matched",
+            "reason": null
+          }
+        ],
+        "sourceIds": [
+          "S2"
+        ]
+      }
+    ],
+    "risks": [
+      {
+        "text": "A failed repair mid-job could consume deadline time with no fallback.",
+        "replyIds": [
+          "r1:claude-default"
+        ],
+        "unmatchedReplyIds": [],
+        "evidence": [
+          {
+            "sourceId": "S1",
+            "quote": "Reliability after repair is uncertain.",
+            "status": "matched",
+            "reason": null
+          }
+        ],
+        "sourceIds": [
+          "S1"
+        ]
+      },
+      {
+        "text": "Installation or setup delays could erode replacement slack.",
+        "replyIds": [
+          "r1:openai-default"
+        ],
+        "unmatchedReplyIds": [],
+        "evidence": [
+          {
+            "sourceId": "S1",
+            "quote": "Replacement costs $1,200 and arrives in one week.",
+            "status": "matched",
+            "reason": null
+          }
+        ],
+        "sourceIds": [
+          "S1"
+        ]
+      }
+    ],
+    "nextSteps": [
+      {
+        "text": "Confirm job count and due dates, then request repair and outsourcing timelines.",
+        "replyIds": [
+          "r1:openai-default",
+          "r1:claude-default"
+        ],
+        "unmatchedReplyIds": [],
+        "evidence": [
+          {
+            "sourceId": "S2",
+            "quote": "Future job volume is unknown.",
+            "status": "matched",
+            "reason": null
+          }
+        ],
+        "sourceIds": [
+          "S2"
+        ]
+      }
+    ],
+    "unresolvedQuestions": [
+      "Does any option confirmed meet the 14-day deadline, and does the $1,500 cap cover all costs through completion?"
+    ]
+  },
+  "reportError": null,
+  "actualProviderCalls": 3
+}
