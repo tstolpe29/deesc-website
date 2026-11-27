@@ -1,4 +1,4 @@
-# DEESC Prototyping
+# DEESC
 
 Electronics and embedded-systems portfolio, hosted at https://deescproto.com.
 
