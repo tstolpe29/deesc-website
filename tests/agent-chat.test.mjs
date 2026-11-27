@@ -25,8 +25,10 @@ test('chat is the primary workflow and the existing private workspace is the des
   assert.equal(firstLink?.[1], 'https://deesc-agent-chat.rightbench4.chatgpt.site');
   assert.equal(firstLink?.[2], 'Open Agent Chat');
   assert.match(main, /three selected AI agents/i);
-  assert.match(main, /One combined answer\./);
-  assert.match(main, /<summary>Expand the discussion<\/summary>/);
+  assert.match(main, /one combined answer\./i);
+  assert.match(main, /The original replies stay available/);
+  assert.match(main, /Agents agreeing does not make an answer correct/);
+  assert.match(main, /The agents produce text only/);
   assert.match(main, /Owner-only private workspace\. Public sign-up is not available\./);
   assert.match(main, /Bring your own API keys or local model/);
   assert.doesNotMatch(main, /<form|<textarea|id="brief-builder"|id="canvas"/);

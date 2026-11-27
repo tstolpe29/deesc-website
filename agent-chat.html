@@ -5,12 +5,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#faf6ef">
-  <meta name="description" content="One message, three selected AI agents, and one combined answer. DEESC Agent Chat brings the conversation together, with the original discussion available to inspect.">
+  <meta name="description" content="DEESC Agent Chat sends one message to three selected AI agents and returns one combined answer. Owner-only private workspace.">
   <title>DEESC Agent Chat</title>
   <link rel="icon" href="assets/brand/deesc-chip-blue.png">
   <link rel="canonical" href="https://deescproto.com/agent-chat.html">
   <link rel="stylesheet" href="decision-base.css?v=3">
-  <link rel="stylesheet" href="agent-chat.css?v=2">
+  <link rel="stylesheet" href="agent-chat.css?v=3">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,36 +26,38 @@
   <main id="main">
     <section class="container chat-hero" aria-labelledby="chat-heading">
       <div class="chat-intro">
-        <p class="eyebrow">DEESC AGENT CHAT</p>
-        <h1 id="chat-heading">One chat.<br>Three agents.<br><span class="muted">One combined answer.</span></h1>
-        <p class="chat-lede">Send a message to three selected AI agents. Let them compare their reasoning, then read a combined answer in the same conversation.</p>
-        <div class="chat-actions"><a class="button primary" href="https://deesc-agent-chat.rightbench4.chatgpt.site" rel="nofollow">Open Agent Chat</a><a class="chat-text-link" href="#how-it-works">How it works</a></div>
+        <h1 id="chat-heading">DEESC Agent Chat</h1>
+        <p class="chat-lede">Send one message to three selected AI agents and get one combined answer.</p>
+        <div class="chat-actions"><a class="button primary" href="https://deesc-agent-chat.rightbench4.chatgpt.site" rel="nofollow">Open Agent Chat</a></div>
         <p class="chat-access">Owner-only private workspace. Public sign-up is not available.</p>
       </div>
       <aside class="chat-flow" aria-label="How a chat run works">
-        <p class="chat-label">THE CONVERSATION, TOGETHER</p>
-        <div class="chat-flow-message"><span>Your message</span><p>A question, an idea, or a problem to work through.</p></div>
+        <p class="chat-flow-message">Your message</p>
         <div class="chat-flow-agents" aria-label="Three agents receive the message"><span>Agent 1</span><span>Agent 2</span><span>Agent 3</span></div>
-        <div class="chat-flow-answer"><span>Combined answer</span><p>A synthesis of the available replies, with disagreements and open questions kept visible.</p></div>
-        <details class="chat-flow-details"><summary>Expand the discussion</summary><p>In the workspace, inspect each agent’s original response and any follow-up rounds. The combined answer does not replace the conversation behind it.</p></details>
-        <p class="chat-diagram-note">Workflow illustration, not a generated response.</p>
+        <p class="chat-flow-answer">Combined answer</p>
+        <p class="chat-diagram-note">Illustration, not a generated response.</p>
       </aside>
     </section>
     <section class="container chat-how" id="how-it-works" aria-labelledby="how-heading">
-      <div class="chat-section-heading"><p class="eyebrow">A SINGLE CONVERSATION</p><h2 id="how-heading">Ask once. Keep the context together.</h2></div>
-      <div class="chat-steps">
-        <article><h3>Choose your agents</h3><p>Select three configured agents. Give them different models or roles, or use the same model with different instructions.</p></article>
-        <article><h3>Let them discuss</h3><p>The agents answer your message and can respond to each other’s reasoning. Choose the number of discussion rounds before sending.</p></article>
-        <article><h3>Read the combined answer</h3><p>A selected agent brings the replies together. Expand the discussion for the original responses, then continue with a follow-up.</p></article>
-      </div>
-      <p class="chat-boundary">Several agents agreeing does not make an answer correct. If a response fails or is unavailable, the run should be read with that gap in mind.</p>
+      <h2 id="how-heading">How it works</h2>
+      <ol class="chat-steps">
+        <li><h3>Pick three agents</h3><p>Each agent has a model and a role. They can be different models, or the same model with different instructions.</p></li>
+        <li><h3>They answer</h3><p>The agents reply to your message. With more than one round they also reply to each other. You set the number of rounds before sending.</p></li>
+        <li><h3>One agent combines</h3><p>A selected agent combines the replies into one answer. The original replies stay available, and you can ask a follow-up.</p></li>
+      </ol>
     </section>
-    <section class="container chat-connections" aria-labelledby="connections-heading">
-      <div><p class="eyebrow">YOUR AGENTS, YOUR CONNECTIONS</p><h2 id="connections-heading">Choose the models.<br>Set the roles.</h2></div>
-      <div><p>Configure named agents using registered OpenAI, Claude, local Ollama, or OpenAI-compatible connections. Change the model and instructions without juggling separate chat windows.</p><p>Bring your own API keys or local model. Keys are stored encrypted on the connected Windows PC, which must be awake and signed in to run the agents. Provider usage fees still apply.</p><details class="chat-privacy"><summary>Where do messages and replies go?</summary><p>The private host stores your conversation. Selected providers receive your message and relevant conversation context; discussion rounds also receive other agents’ replies. Using a local model does not make the hosted workspace local-only.</p><p>These agents produce text. They do not execute commands, browse your files, or control your PC through this chat.</p></details></div>
+    <section class="container chat-notes" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Limits and privacy</h2>
+      <ul>
+        <li>Agents agreeing does not make an answer correct. If an agent fails, its reply is missing from the result.</li>
+        <li>Bring your own API keys or local model: OpenAI, Claude, local Ollama, or an OpenAI-compatible connection. Provider usage fees still apply.</li>
+        <li>Keys are stored encrypted on the connected Windows PC, which must be awake and signed in to run the agents.</li>
+        <li>The private host stores the conversation. The selected providers receive your message, the relevant context and, in later rounds, the other agents’ replies. Using a local model does not make the hosted workspace local-only.</li>
+        <li>The agents produce text only. They do not run commands, read your files or control your PC.</li>
+      </ul>
     </section>
     <section class="container chat-optional" aria-labelledby="optional-heading">
-      <div><h2 id="optional-heading">Optional tools</h2><p>Need to organize a brief or compare options? The browser tools and an earlier recorded review remain available separately.</p></div>
+      <h2 id="optional-heading">Optional tools</h2>
       <div class="chat-optional-links"><a href="optional-tools.html">Brief builder &amp; comparison canvas</a><a href="optional-tools.html#recorded-review">Earlier recorded review</a></div>
     </section>
   </main>
