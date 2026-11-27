@@ -49,3 +49,7 @@ sheets, the six-layer board with 3D models, symbol and footprint libraries, plot
 no history, logs or fabrication outputs). The project supervisor's name is removed from the cover sheet in both
 packages; the designer's and checker's names remain. `project.js` renders a document entry that has
 `"download": true` as a download link with its `kind` label; other entries stay PDF links.
+
+## November 27, 2026 update
+
+The whole site now uses the warm light look first made for the Agent Chat page: cream background, near-black text, pill navigation and buttons, rounded photos and cards. The four shared stylesheets (`styles.css`, `case-study.css`, `decision-base.css`, `decision-canvas.css`) were converted colour by colour according to use (text, surface, line); each ends with a short "Warm light theme" block that shapes the components. Areas drawn over photographs (the home page hero, photo captions, the photo viewer) stay dark on purpose so pictures and their labels remain readable. The name shown on the pages is DEESC, and the tab icon is `assets/brand/deesc-icon.png`.

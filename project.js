@@ -6,7 +6,7 @@
   const mount = document.querySelector('#projectMount');
   const e = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   if (!p) {
-    document.title = 'Project not found | DEESC Prototyping';
+    document.title = 'Project not found | DEESC';
     mount.innerHTML = '<section class="container page-intro error-page"><p class="eyebrow">PROJECT NOT FOUND</p><h1>Project not<br>available.</h1><p>This project link is missing or no longer available.</p><a class="button primary" href="index.html">View selected work <span>↗</span></a></section>';
     return;
   }
@@ -15,7 +15,7 @@
   document.querySelectorAll('.main-nav a').forEach(link => {
     if (link.getAttribute('href') === backUrl.split('#')[0]) link.setAttribute('aria-current','page');
   });
-  document.title = `${p.title} | DEESC Prototyping`;
+  document.title = `${p.title} | DEESC`;
   document.querySelector('meta[name="description"]').content = p.subtitle;
   document.querySelector('meta[property="og:title"]').content = document.title;
   document.querySelector('meta[property="og:description"]').content = p.subtitle;
