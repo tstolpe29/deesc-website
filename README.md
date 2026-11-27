@@ -9,6 +9,8 @@ Electronics and embedded-systems portfolio, hosted at https://deescproto.com.
 - `projects.html`: short explanations of smaller projects.
 - `about.html`: engineering background, capabilities and contact links.
 - `project.html?id=...`: project notes, documents and keyboard-accessible photo galleries.
+- `agent-chat.html`: DEESC Agent Chat overview and entry to the existing private workspace. One message goes to selected agents; a combined answer and the original discussion stay in one conversation.
+- `optional-tools.html`: the preserved browser brief builder, comparison canvas and earlier recorded review. These are optional, separate tools rather than the main chat workflow.
 
 ## Editing
 
@@ -21,6 +23,8 @@ Project states distinguish working hardware, active development and design targe
 ## Local preview
 
 Serve this folder with any static web server. For example: `python -m http.server 8765`.
+
+Run the dependency-free public-page checks with `node --test tests/*.test.mjs`. They check the chat destination, navigation, CSP-compatible local assets and retained optional tools. The public landing does not run model calls or offer customer registration; the workspace requires its existing private access.
 
 The gallery supports keyboard navigation with Left/Right and Escape. The mobile navigation, semantic headings, skip link and reduced-motion styles are included in the site.
 

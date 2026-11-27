@@ -24,4 +24,5 @@ if(target)fetch('./decision-review-example.json').then(r=>{if(!r.ok)throw Error(
   const discussion=element('details');discussion.append(element('summary','Read the original model responses'));for(const r of example.replies){discussion.append(element('h4',`${r.name} · ${r.phase} · ${r.model}`),element('p',`${r.status}; ${r.usage?.inputTokens??'unknown'} input / ${r.usage?.outputTokens??'unknown'} output tokens`),element('pre',r.text));if(r.contextShortened)discussion.append(element('p','Earlier discussion was shortened for this call.'));}target.append(discussion);
   target.append(element('p','Original response text is preserved, including any output-limit notice. A matching quote means the text occurs in a supplied excerpt; it does not verify the conclusion. This example does not establish that a panel outperforms a single model.'));
   const a=element('a','Download the recorded review');a.href='./decision-review-example.json';a.download='deesc-recorded-example.json';target.append(a);
+  if(location.hash==='#recorded-review')target.scrollIntoView({block:'start'});
 }).catch(()=>{target.hidden=true;});
